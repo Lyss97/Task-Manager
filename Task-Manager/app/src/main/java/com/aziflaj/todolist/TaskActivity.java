@@ -76,19 +76,15 @@ public class TaskActivity extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 final ToDoItem task = new ToDoItem();
-
-                                //Everything down here is wrong, deprecated insert function ruins it. I'll fix tomorrow
                                 task.Text = String.valueOf(taskEditText.getText());
-                                mClient.getTable(ToDoItem.class).insert(task, new TableOperationCallback<ToDoItem>() {
-                                            public void onCompleted(ToDoItem entity, Exception exception, ServiceFilterResponse response) {
-                                                if (exception == null) {
-                                                    Log.d("INSERT", "Succeeded");
-                                                } else {
-                                                    Log.d("INSERT", "Failed");
-                                                }
-                                            }
-                                        });
-//
+                                MobileServiceTable<ToDoItem> mToDoTable = mClient.getTable(ToDoItem.class);
+                                ToDo entity = mToDoTable
+                                        .insert(task)
+                                        .get()
+
+
+
+// Old Code:
 //                                SQLiteDatabase db = mHelper.getWritableDatabase();
 //                                ContentValues values = new ContentValues();
 //                                values.put(TaskContract.TaskEntry.COL_TASK_TITLE, task);
