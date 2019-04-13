@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.aziflaj.todolist">
+
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -30,16 +31,16 @@
         </activity>
 
         <activity
-            android:name=".TaskActivity"
+            android:name=".ToDoActivity"
             android:label="Block"
             android:parentActivityName=".LayoutActivity">
 
         </activity>
-        <activity android:name=".CommentActivity"
+<!--        <activity android:name=".CommentActivity"
             android:label="Comment"
             android:parentActivityName=".TaskActivity">
 
-        </activity>
+        </activity-->
     </application>
 
 </manifest>

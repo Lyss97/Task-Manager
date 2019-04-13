@@ -1,3 +1,4 @@
+/*
 package com.aziflaj.todolist;
 
 import android.content.ContentValues;
@@ -20,8 +21,10 @@ import android.widget.TextView;
 
 import com.aziflaj.todolist.db.TaskContract;
 import com.aziflaj.todolist.db.TaskDbHelper;
-import com.microsoft.windowsazure.mobileservices.*;
+//import com.microsoft.windowsazure.mobileservices.*;
 import com.microsoft.windowsazure.mobileservices.http.ServiceFilterResponse;
+import com.microsoft.windowsazure.mobileservices.table.MobileServiceTable;
+
 import com.microsoft.windowsazure.mobileservices.table.TableOperationCallback;
 
 import java.net.MalformedURLException;
@@ -76,11 +79,11 @@ public class TaskActivity extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 final ToDoItem task = new ToDoItem();
-                                task.Text = String.valueOf(taskEditText.getText());
+                                task.setText(String.valueOf(taskEditText.getText()));
                                 MobileServiceTable<ToDoItem> mToDoTable = mClient.getTable(ToDoItem.class);
-                                ToDo entity = mToDoTable
-                                        .insert(task)
-                                        .get()
+                                //ToDoItem entity = mToDoTable
+                                  //      .insert(task);
+                                        //.get();
 
 
 
@@ -149,3 +152,4 @@ public class TaskActivity extends AppCompatActivity {
         startActivity(new Intent(getApplicationContext(), CommentActivity.class));
     }
 }
+*/

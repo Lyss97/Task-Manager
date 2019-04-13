@@ -6,7 +6,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="16"
+        android:minSdkVersion="19"
         android:targetSdkVersion="28" />
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -38,16 +38,17 @@
             android:parentActivityName="com.aziflaj.todolist.MenuActivity" >
         </activity>
         <activity
-            android:name="com.aziflaj.todolist.TaskActivity"
+            android:name="com.aziflaj.todolist.ToDoActivity"
             android:label="Block"
             android:parentActivityName="com.aziflaj.todolist.LayoutActivity" >
         </activity>
-        <activity
-            android:name="com.aziflaj.todolist.CommentActivity"
+        <!--
+            <activity android:name=".CommentActivity"
             android:label="Comment"
-            android:parentActivityName="com.aziflaj.todolist.TaskActivity" >
-        </activity>
+            android:parentActivityName=".TaskActivity">
 
+        </activity
+        -->
         <meta-data
             android:name="android.support.VERSION"
             android:value="26.1.0" />

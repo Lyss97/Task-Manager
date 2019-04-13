@@ -61,4 +61,9 @@
     <string name="select">Select</string>
     <string name="join">Join</string>
     <string name="remove">Remove</string>
+    <string name="service_title">Tasks</string>
+    <string name="add_textbox_hint">Add a Task Here</string>
+    <string name="add_button_text">Add</string>
+    <string name="checkbox_text">Item Text</string>
+    <string name="menu_refresh">Refresh</string>
 </resources>

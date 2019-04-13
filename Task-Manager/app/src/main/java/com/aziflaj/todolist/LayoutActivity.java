@@ -26,7 +26,7 @@ public class LayoutActivity extends AppCompatActivity {
     }
 
     public void launchMainActivity(View view) {
-        Intent TaskIntent = new Intent(this, TaskActivity.class);
+        Intent TaskIntent = new Intent(this, ToDoActivity.class);
         startActivity(TaskIntent);
     }
 }

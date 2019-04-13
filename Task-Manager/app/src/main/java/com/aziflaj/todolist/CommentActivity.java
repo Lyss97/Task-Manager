@@ -1,3 +1,4 @@
+/*
 package com.aziflaj.todolist;
 
 import android.content.Intent;
@@ -26,3 +27,4 @@ public class CommentActivity extends AppCompatActivity {
     }
 
 }
+*/

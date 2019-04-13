@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\Samuel\\Documents\\TodoList-master\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-land\\values-land.xml",
+            "outputFile": "C:\\Users\\Samuel\\Documents\\GIT - Copy\\Task-Manager\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-land\\values-land.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Samuel\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\b4b8cf1ef270e796958243c838c298a3\\res\\values-land\\values-land.xml",
