@@ -15,7 +15,7 @@ public class MenuActivity extends AppCompatActivity {
         setContentView(R.layout.menu_layout);
 
         TextView txtview=(TextView)findViewById(R.id.textview);
-        String text="Layout 1 \n Layout 2 \n Layout 3 \n Layout 4 \n Layout 5 \n Layout 6 \n Layout 7 Layout 8 \n Layout 9 \n Layout 10 \n Layout 11 \n Layout 12 \n Layout 13 \n Layout 14";
+        String text="\n My Layout \n Sam's Layout \n Damon's Layout \n Alyssa's Layout \n Shared Layout \n Group 4 Layout \n Layout 7 \n Layout 8 \n Layout 9 \n Layout 10 \n Layout 11 \n Layout 12 \n Layout 13 \n Layout 14 \n Layout 15 \n Layout 16 \n Layout 17";
         txtview.setText(text);
         txtview.setMovementMethod(new ScrollingMovementMethod());
     }
