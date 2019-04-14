@@ -1,10 +1,20 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\Samuel\\Documents\\GIT\\Task-Manager\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v16\\values-v16.xml",
+            "outputFile": "C:\\Users\\Lyss\\redo\\Task-Manager\\Task-Manager\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v16\\values-v16.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Samuel\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\b4b8cf1ef270e796958243c838c298a3\\res\\values-v16\\values-v16.xml",
+                    "source": "C:\\Users\\Lyss\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-26.1.0.aar\\13df93e71f3a34b5b693f8813cb1665f\\res\\values-v16\\values-v16.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "65",
+                        "endOffsets": "116"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Lyss\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\57f35be2638470257bf0d4deeafdefc8\\res\\values-v16\\values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -20,16 +30,6 @@
                         "endLines": "6",
                         "endColumns": "12",
                         "endOffsets": "289"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\Samuel\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-26.1.0.aar\\3eb06aa2edd48ee8f3bbf708399bedb3\\res\\values-v16\\values-v16.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "65",
-                        "endOffsets": "116"
                     }
                 }
             ]

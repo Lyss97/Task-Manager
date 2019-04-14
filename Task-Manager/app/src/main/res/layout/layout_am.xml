@@ -6,7 +6,9 @@
     android:layout_height="match_parent"
     tools:context="com.aziflaj.todolist.LayoutActivity"
     tools:showIn="@layout/layout_am">
+
     <Button
+        style="@android:style/Widget.Button.Toggle"
         android:layout_width="100dp"
         android:layout_height="40dp"
         android:layout_marginTop="10dp"
@@ -17,6 +19,7 @@
 
     <Button
         android:id="@+id/btime1"
+        style="@android:style/Widget.Button"
         android:layout_height="80dp"
         android:layout_width="80dp"
         android:layout_marginTop="60dp"
@@ -28,6 +31,7 @@
         android:onClick="launchMainActivity" />
     <Button
         android:id="@+id/btime2"
+        style="@android:style/Widget.Button"
         android:layout_toEndOf="@+id/btime1"
         android:layout_height="80dp"
         android:layout_width="80dp"
@@ -38,6 +42,7 @@
         android:layout_toRightOf="@+id/btime1" />
     <Button
         android:id="@+id/btime3"
+        style="@android:style/Widget.Button"
         android:layout_toEndOf="@+id/btime2"
         android:layout_height="80dp"
         android:layout_width="80dp"
@@ -49,6 +54,7 @@
 
     <Button
         android:id="@+id/btime4"
+        style="@android:style/Widget.Button"
         android:layout_toEndOf="@+id/btime3"
         android:layout_height="80dp"
         android:layout_width="80dp"
@@ -64,6 +70,7 @@
     <Button
         android:id="@+id/btime5"
         android:layout_height="80dp"
+        style="@android:style/Widget.Button"
         android:layout_width="80dp"
         android:layout_below="@id/btime1"
         android:layout_marginTop="10dp"
@@ -74,6 +81,7 @@
         android:layout_alignRight="@id/btime1" />
     <Button
         android:id="@+id/btime6"
+        style="@android:style/Widget.Button"
         android:layout_toEndOf="@+id/btime5"
         android:layout_height="80dp"
         android:layout_width="80dp"
@@ -87,6 +95,7 @@
         android:layout_alignRight="@id/btime2" />
     <Button
         android:id="@+id/btime7"
+        style="@android:style/Widget.Button"
         android:layout_toEndOf="@+id/btime6"
         android:layout_height="80dp"
         android:layout_width="80dp"
@@ -101,6 +110,7 @@
 
     <Button
         android:id="@+id/btime8"
+        style="@android:style/Widget.Button"
         android:layout_toEndOf="@+id/btime7"
         android:layout_height="80dp"
         android:layout_width="80dp"
@@ -118,6 +128,7 @@
 
     <Button
         android:id="@+id/btime9"
+        style="@android:style/Widget.Button"
         android:layout_height="80dp"
         android:layout_width="80dp"
         android:layout_below="@id/btime5"
@@ -129,6 +140,7 @@
         android:layout_alignRight="@id/btime5" />
     <Button
         android:id="@+id/btime10"
+        style="@android:style/Widget.Button"
         android:layout_toEndOf="@+id/btime9"
         android:layout_height="80dp"
         android:layout_width="80dp"
@@ -139,6 +151,7 @@
         android:text="@string/time10"/>
     <Button
         android:id="@+id/btime11"
+        style="@android:style/Widget.Button"
         android:layout_toEndOf="@+id/btime10"
         android:layout_height="80dp"
         android:layout_width="80dp"
@@ -150,6 +163,7 @@
 
     <Button
         android:id="@+id/btime12"
+        style="@android:style/Widget.Button"
         android:layout_toEndOf="@+id/btime11"
         android:layout_height="80dp"
         android:layout_width="80dp"
@@ -164,6 +178,7 @@
 
     <Button
         android:id="@+id/btime13"
+        style="@android:style/Widget.Button"
         android:layout_height="80dp"
         android:layout_width="80dp"
         android:layout_below="@id/btime9"
@@ -173,6 +188,7 @@
         android:text="@string/time13"/>
     <Button
         android:id="@+id/btime14"
+        style="@android:style/Widget.Button"
         android:layout_toEndOf="@+id/btime13"
         android:layout_height="80dp"
         android:layout_width="80dp"
@@ -183,6 +199,7 @@
         android:text="@string/time14"/>
     <Button
         android:id="@+id/btime15"
+        style="@android:style/Widget.Button"
         android:layout_toEndOf="@+id/btime14"
         android:layout_height="80dp"
         android:layout_width="80dp"
@@ -194,6 +211,7 @@
 
     <Button
         android:id="@+id/btime16"
+        style="@android:style/Widget.Button"
         android:layout_toEndOf="@+id/btime15"
         android:layout_height="80dp"
         android:layout_width="80dp"
@@ -208,6 +226,7 @@
 
     <Button
         android:id="@+id/btime17"
+        style="@android:style/Widget.Button"
         android:layout_height="80dp"
         android:layout_width="80dp"
         android:layout_below="@id/btime13"
@@ -217,6 +236,7 @@
         android:text="@string/time17"/>
     <Button
         android:id="@+id/btime18"
+        style="@android:style/Widget.Button"
         android:layout_toEndOf="@+id/btime17"
         android:layout_height="80dp"
         android:layout_width="80dp"
@@ -227,6 +247,7 @@
         android:text="@string/time18"/>
     <Button
         android:id="@+id/btime19"
+        style="@android:style/Widget.Button"
         android:layout_toEndOf="@+id/btime18"
         android:layout_height="80dp"
         android:layout_width="80dp"
@@ -238,6 +259,7 @@
 
     <Button
         android:id="@+id/btime20"
+        style="@android:style/Widget.Button"
         android:layout_toEndOf="@+id/btime19"
         android:layout_height="80dp"
         android:layout_width="80dp"
@@ -252,6 +274,7 @@
 
     <Button
         android:id="@+id/btime21"
+        style="@android:style/Widget.Button"
         android:layout_height="80dp"
         android:layout_width="80dp"
         android:layout_below="@id/btime17"
@@ -261,6 +284,7 @@
         android:text="@string/time21"/>
     <Button
         android:id="@+id/btime22"
+        style="@android:style/Widget.Button"
         android:layout_toEndOf="@+id/btime21"
         android:layout_height="80dp"
         android:layout_width="80dp"
@@ -271,6 +295,7 @@
         android:text="@string/time22"/>
     <Button
         android:id="@+id/btime23"
+        style="@android:style/Widget.Button"
         android:layout_toEndOf="@+id/btime22"
         android:layout_height="80dp"
         android:layout_width="80dp"
@@ -282,6 +307,7 @@
 
     <Button
         android:id="@+id/btime24"
+        style="@android:style/Widget.Button"
         android:layout_toEndOf="@+id/btime23"
         android:layout_height="80dp"
         android:layout_width="80dp"

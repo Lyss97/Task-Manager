@@ -8,270 +8,307 @@
     tools:context=".LayoutActivity">
 
     <Button
+        style="@android:style/Widget.Button.Toggle"
         android:layout_width="100dp"
         android:layout_height="40dp"
-        android:layout_marginTop="10dp"
         android:layout_marginStart="30dp"
-        android:text="@string/settings"
-        android:onClick="launchFirstActivity"/>
+        android:layout_marginTop="10dp"
+        android:onClick="launchFirstActivity"
+        android:text="@string/settings" />
 
 
     <Button
         android:id="@+id/btime25"
-        android:layout_height="80dp"
+        style="@android:style/Widget.Button"
         android:layout_width="80dp"
-        android:layout_marginTop="60dp"
+        android:layout_height="80dp"
         android:layout_marginStart="30dp"
+        android:layout_marginTop="60dp"
         android:layout_marginEnd="5dp"
-        android:text="@string/time25"/>
+        android:text="@string/time25" />
+
     <Button
         android:id="@+id/btime26"
-        android:layout_toEndOf="@+id/btime25"
-        android:layout_height="80dp"
+        style="@android:style/Widget.Button"
         android:layout_width="80dp"
-        android:layout_marginTop="60dp"
+        android:layout_height="80dp"
         android:layout_marginStart="5dp"
+        android:layout_marginTop="60dp"
         android:layout_marginEnd="5dp"
-        android:text="@string/time26"/>
+        android:layout_toEndOf="@+id/btime25"
+        android:text="@string/time26" />
+
     <Button
         android:id="@+id/btime27"
-        android:layout_toEndOf="@+id/btime26"
-        android:layout_height="80dp"
+        style="@android:style/Widget.Button"
         android:layout_width="80dp"
-        android:layout_marginTop="60dp"
+        android:layout_height="80dp"
         android:layout_marginStart="5dp"
+        android:layout_marginTop="60dp"
         android:layout_marginEnd="5dp"
-        android:text="@string/time27"/>
+        android:layout_toEndOf="@+id/btime26"
+        android:text="@string/time27" />
 
     <Button
         android:id="@+id/btime28"
-        android:layout_toEndOf="@+id/btime27"
-        android:layout_height="80dp"
+        style="@android:style/Widget.Button"
         android:layout_width="80dp"
-        android:layout_marginTop="60dp"
+        android:layout_height="80dp"
         android:layout_marginStart="5dp"
+        android:layout_marginTop="60dp"
         android:layout_marginEnd="5dp"
-        android:text="@string/time28"/>
+        android:layout_toEndOf="@+id/btime27"
+        android:text="@string/time28" />
 
 
     <!--     -->
 
     <Button
         android:id="@+id/btime29"
-        android:layout_height="80dp"
+        style="@android:style/Widget.Button"
         android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_below="@id/btime25"
-        android:layout_marginTop="10dp"
         android:layout_alignStart="@id/btime25"
         android:layout_alignEnd="@id/btime25"
-        android:text="@string/time29"/>
+        android:layout_marginTop="10dp"
+        android:text="@string/time29" />
+
     <Button
         android:id="@+id/btime30"
-        android:layout_toEndOf="@+id/btime29"
-        android:layout_height="80dp"
+        style="@android:style/Widget.Button"
         android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_below="@id/btime26"
-        android:layout_marginTop="10dp"
         android:layout_alignStart="@id/btime26"
         android:layout_alignEnd="@id/btime26"
-        android:text="@string/time30"/>
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/btime29"
+        android:text="@string/time30" />
+
     <Button
         android:id="@+id/btime31"
-        android:layout_toEndOf="@+id/btime30"
-        android:layout_height="80dp"
+        style="@android:style/Widget.Button"
         android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_below="@id/btime27"
-        android:layout_marginTop="10dp"
         android:layout_alignStart="@id/btime27"
         android:layout_alignEnd="@id/btime27"
-        android:text="@string/time31"/>
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/btime30"
+        android:text="@string/time31" />
 
     <Button
         android:id="@+id/btime32"
-        android:layout_toEndOf="@+id/btime31"
-        android:layout_height="80dp"
+        style="@android:style/Widget.Button"
         android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_below="@id/btime28"
-        android:layout_marginTop="10dp"
         android:layout_alignStart="@id/btime28"
         android:layout_alignEnd="@id/btime28"
-        android:text="@string/time32"/>
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/btime31"
+        android:text="@string/time32" />
 
 
     <!--     -->
 
     <Button
         android:id="@+id/btime33"
-        android:layout_height="80dp"
+        style="@android:style/Widget.Button"
         android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_below="@id/btime29"
-        android:layout_marginTop="10dp"
         android:layout_alignStart="@id/btime29"
         android:layout_alignEnd="@id/btime29"
-        android:text="@string/time33"/>
+        android:layout_marginTop="10dp"
+        android:text="@string/time33" />
+
     <Button
         android:id="@+id/btime34"
-        android:layout_toEndOf="@+id/btime33"
-        android:layout_height="80dp"
+        style="@android:style/Widget.Button"
         android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_below="@id/btime30"
-        android:layout_marginTop="10dp"
         android:layout_alignStart="@id/btime30"
         android:layout_alignEnd="@id/btime30"
-        android:text="@string/time34"/>
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/btime33"
+        android:text="@string/time34" />
+
     <Button
         android:id="@+id/btime35"
-        android:layout_toEndOf="@+id/btime34"
-        android:layout_height="80dp"
+        style="@android:style/Widget.Button"
         android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_below="@id/btime31"
-        android:layout_marginTop="10dp"
         android:layout_alignStart="@id/btime31"
         android:layout_alignEnd="@id/btime31"
-        android:text="@string/time35"/>
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/btime34"
+        android:text="@string/time35" />
 
     <Button
         android:id="@+id/btime36"
-        android:layout_toEndOf="@+id/btime35"
-        android:layout_height="80dp"
+        style="@android:style/Widget.Button"
         android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_below="@id/btime32"
-        android:layout_marginTop="10dp"
         android:layout_alignStart="@id/btime32"
         android:layout_alignEnd="@id/btime32"
-        android:text="@string/time36"/>
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/btime35"
+        android:text="@string/time36" />
 
 
     <!--     -->
 
     <Button
         android:id="@+id/btime37"
-        android:layout_height="80dp"
+        style="@android:style/Widget.Button"
         android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_below="@id/btime33"
-        android:layout_marginTop="10dp"
         android:layout_alignStart="@id/btime33"
         android:layout_alignEnd="@id/btime33"
-        android:text="@string/time37"/>
+        android:layout_marginTop="10dp"
+        android:text="@string/time37" />
+
     <Button
         android:id="@+id/btime38"
-        android:layout_toEndOf="@+id/btime37"
-        android:layout_height="80dp"
+        style="@android:style/Widget.Button"
         android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_below="@id/btime34"
-        android:layout_marginTop="10dp"
         android:layout_alignStart="@id/btime34"
         android:layout_alignEnd="@id/btime34"
-        android:text="@string/time38"/>
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/btime37"
+        android:text="@string/time38" />
+
     <Button
         android:id="@+id/btime39"
-        android:layout_toEndOf="@+id/btime38"
-        android:layout_height="80dp"
+        style="@android:style/Widget.Button"
         android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_below="@id/btime35"
-        android:layout_marginTop="10dp"
         android:layout_alignStart="@id/btime35"
         android:layout_alignEnd="@id/btime35"
-        android:text="@string/time39"/>
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/btime38"
+        android:text="@string/time39" />
 
     <Button
         android:id="@+id/btime40"
-        android:layout_toEndOf="@+id/btime39"
-        android:layout_height="80dp"
+        style="@android:style/Widget.Button"
         android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_below="@id/btime36"
-        android:layout_marginTop="10dp"
         android:layout_alignStart="@id/btime36"
         android:layout_alignEnd="@id/btime36"
-        android:text="@string/time40"/>
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/btime39"
+        android:text="@string/time40" />
 
 
     <!--     -->
 
     <Button
         android:id="@+id/btime41"
-        android:layout_height="80dp"
+        style="@android:style/Widget.Button"
         android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_below="@id/btime37"
-        android:layout_marginTop="10dp"
         android:layout_alignStart="@id/btime37"
         android:layout_alignEnd="@id/btime37"
-        android:text="@string/time41"/>
+        android:layout_marginTop="10dp"
+        android:text="@string/time41" />
+
     <Button
         android:id="@+id/btime42"
-        android:layout_toEndOf="@+id/btime41"
-        android:layout_height="80dp"
+        style="@android:style/Widget.Button"
         android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_below="@id/btime38"
-        android:layout_marginTop="10dp"
         android:layout_alignStart="@id/btime38"
         android:layout_alignEnd="@id/btime38"
-        android:text="@string/time42"/>
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/btime41"
+        android:text="@string/time42" />
+
     <Button
         android:id="@+id/btime43"
-        android:layout_toEndOf="@+id/btime42"
-        android:layout_height="80dp"
+        style="@android:style/Widget.Button"
         android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_below="@id/btime39"
-        android:layout_marginTop="10dp"
         android:layout_alignStart="@id/btime39"
         android:layout_alignEnd="@id/btime39"
-        android:text="@string/time43"/>
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/btime42"
+        android:text="@string/time43" />
 
     <Button
         android:id="@+id/btime44"
-        android:layout_toEndOf="@+id/btime43"
-        android:layout_height="80dp"
+        style="@android:style/Widget.Button"
         android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_below="@id/btime40"
-        android:layout_marginTop="10dp"
         android:layout_alignStart="@id/btime40"
         android:layout_alignEnd="@id/btime40"
-        android:text="@string/time44"/>
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/btime43"
+        android:text="@string/time44" />
 
 
     <!--     -->
 
     <Button
         android:id="@+id/btime45"
-        android:layout_height="80dp"
+        style="@android:style/Widget.Button"
         android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_below="@id/btime41"
-        android:layout_marginTop="10dp"
         android:layout_alignStart="@id/btime41"
         android:layout_alignEnd="@id/btime41"
-        android:text="@string/time45"/>
+        android:layout_marginTop="10dp"
+        android:text="@string/time45" />
+
     <Button
         android:id="@+id/btime46"
-        android:layout_toEndOf="@+id/btime45"
-        android:layout_height="80dp"
+        style="@android:style/Widget.Button"
         android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_below="@id/btime42"
-        android:layout_marginTop="10dp"
         android:layout_alignStart="@id/btime42"
         android:layout_alignEnd="@id/btime42"
-        android:text="@string/time46"/>
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/btime45"
+        android:text="@string/time46" />
+
     <Button
         android:id="@+id/btime47"
-        android:layout_toEndOf="@+id/btime46"
-        android:layout_height="80dp"
+        style="@android:style/Widget.Button"
         android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_below="@id/btime43"
-        android:layout_marginTop="10dp"
         android:layout_alignStart="@id/btime43"
         android:layout_alignEnd="@id/btime43"
-        android:text="@string/time47"/>
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/btime46"
+        android:text="@string/time47" />
 
     <Button
         android:id="@+id/btime48"
-        android:layout_toEndOf="@+id/btime47"
-        android:layout_height="80dp"
+        style="@android:style/Widget.Button"
         android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_below="@id/btime44"
-        android:layout_marginTop="10dp"
         android:layout_alignStart="@id/btime44"
         android:layout_alignEnd="@id/btime44"
-        android:text="@string/time48"/>
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/btime47"
+        android:text="@string/time48" />
 
 
 

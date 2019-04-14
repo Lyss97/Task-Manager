@@ -20,41 +20,42 @@
 
     <Button
         android:id="@+id/joinBtn"
-        android:layout_below="@id/textview"
-        android:layout_marginTop="20dp"
+        style="@android:style/Widget.Button"
         android:layout_width="80dp"
         android:layout_height="60dp"
-        android:layout_alignLeft="@id/textview"
+        android:layout_below="@id/textview"
         android:layout_alignStart="@id/textview"
+        android:layout_alignLeft="@id/textview"
+        android:layout_marginTop="20dp"
         android:text="@string/join" />
 
     <Button
         android:id="@+id/selectBtn"
+        style="@android:style/Widget.Button"
         android:layout_width="80dp"
         android:layout_height="60dp"
         android:layout_below="@id/textview"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="110dp"
-        android:layout_alignLeft="@id/textview"
         android:layout_alignStart="@id/textview"
-        android:layout_marginEnd="30dp"
+        android:layout_alignLeft="@id/textview"
+        android:layout_marginStart="110dp"
         android:layout_marginLeft="110dp"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="30dp"
-        android:text="@string/select"
         android:onClick="launchLayoutActivity"
-        />
+        android:text="@string/select" />
 
     <Button
         android:id="@+id/removeBtn"
+        style="@android:style/Widget.Button.Small"
         android:layout_width="80dp"
         android:layout_height="60dp"
         android:layout_below="@id/textview"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="220dp"
-        android:layout_alignLeft="@id/textview"
         android:layout_alignStart="@id/textview"
-        android:layout_marginEnd="30dp"
+        android:layout_alignLeft="@id/textview"
+        android:layout_marginStart="220dp"
         android:layout_marginLeft="220dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="30dp"
         android:layout_marginRight="30dp"
         android:text="@string/remove" />
 
