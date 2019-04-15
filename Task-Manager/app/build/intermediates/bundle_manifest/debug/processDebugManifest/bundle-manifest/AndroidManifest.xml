@@ -11,10 +11,12 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:allowBackup="true"
         android:debuggable="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="                       Task-Manager"
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/AppTheme" >
@@ -28,12 +30,12 @@
         </activity>
         <activity
             android:name="com.aziflaj.todolist.MenuActivity"
-            android:label="Menu"
+            android:label="                 Menu"
             android:parentActivityName="com.aziflaj.todolist.HomeActivity" >
         </activity>
         <activity
             android:name="com.aziflaj.todolist.LayoutActivity"
-            android:label="Layout"
+            android:label="                 Layout"
             android:parentActivityName="com.aziflaj.todolist.MenuActivity" >
         </activity>
         <activity
