@@ -1,28 +1,478 @@
 package com.aziflaj.todolist;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.AsyncTask;
+import android.os.Build;
+import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.method.ScrollingMovementMethod;
+import android.text.InputType;
+import android.text.Layout;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
+import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.ProgressBar;
+
+
+import com.google.common.util.concurrent.FutureCallback;
+import com.google.common.util.concurrent.Futures;
+import com.google.common.util.concurrent.ListenableFuture;
+import com.google.common.util.concurrent.SettableFuture;
+import com.microsoft.windowsazure.mobileservices.MobileServiceClient;
+import com.microsoft.windowsazure.mobileservices.http.NextServiceFilterCallback;
+import com.microsoft.windowsazure.mobileservices.http.OkHttpClientFactory;
+import com.microsoft.windowsazure.mobileservices.http.ServiceFilter;
+import com.microsoft.windowsazure.mobileservices.http.ServiceFilterRequest;
+import com.microsoft.windowsazure.mobileservices.http.ServiceFilterResponse;
+import com.microsoft.windowsazure.mobileservices.table.MobileServiceTable;
+import com.microsoft.windowsazure.mobileservices.table.sync.MobileServiceSyncContext;
+import com.microsoft.windowsazure.mobileservices.table.sync.localstore.ColumnDataType;
+import com.microsoft.windowsazure.mobileservices.table.sync.localstore.MobileServiceLocalStoreException;
+import com.microsoft.windowsazure.mobileservices.table.sync.localstore.SQLiteLocalStore;
+import com.microsoft.windowsazure.mobileservices.table.sync.synchandler.SimpleSyncHandler;
+import com.squareup.okhttp.OkHttpClient;
+
+import java.net.MalformedURLException;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import java.util.List;
+import java.util.Map;
+
+import java.util.Random;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
+
+//import static com.microsoft.windowsazure.mobileservices.table.query.QueryOperations.val;
+//import static java.util.stream.Collectors.collectingAndThen;
 
 public class MenuActivity extends AppCompatActivity {
 
+    /**
+     * Client reference
+     */
+    private MobileServiceClient mClient;
+
+    /**
+     * Table used to access data from the mobile app backend.
+     */
+    private MobileServiceTable<LayoutItem> layoutTable;
+
+    //adapter for layout items
+    private LayoutItemAdapter mAdapter;
+
+    /**
+     * Progress spinner to use for table operations
+     */
+
+    private ProgressBar mProgressBar;
+    private EditText mTextEdit;
+    private Button mButton;
+
+    private String devID;
+    private String LayoutID;
+    private String m_Text = "";
+
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
+
+
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_layout);
+        devID = Settings.Secure.getString(this.getContentResolver(),
+                Settings.Secure.ANDROID_ID);
+        Log.d("check", devID);
 
-        TextView txtview=(TextView)findViewById(R.id.textview);
-        String text="\n My Layout \n Sam's Layout \n Damon's Layout \n Alyssa's Layout \n Shared Layout \n Group 4 Layout \n Layout 7 \n Layout 8 \n Layout 9 \n Layout 10 \n Layout 11 \n Layout 12 \n Layout 13 \n Layout 14 \n Layout 15 \n Layout 16 \n Layout 17";
-        txtview.setText(text);
-        txtview.setMovementMethod(new ScrollingMovementMethod());
+        mProgressBar = (ProgressBar) findViewById(R.id.loadingProgressBar);
+        // Initialize the progress bar
+        mProgressBar.setVisibility(ProgressBar.GONE);
+
+        mTextEdit = findViewById(R.id.newLayoutName);
+        mTextEdit.setVisibility(EditText.GONE);
+
+       mButton = findViewById(R.id.newLayoutButton);
+       mButton.setVisibility(Button.GONE);
+
+        try {
+            // Create the client instance, using the provided mobile app URL.
+            mClient = new MobileServiceClient(
+                    "https://layout441.azurewebsites.net",
+                    this).withFilter(new com.aziflaj.todolist.MenuActivity.ProgressFilter());
+
+            // Extend timeout from default of 10s to 20s
+            mClient.setAndroidHttpClientFactory(new OkHttpClientFactory() {
+                @Override
+                public OkHttpClient createOkHttpClient() {
+                    OkHttpClient client = new OkHttpClient();
+                    client.setReadTimeout(20, TimeUnit.SECONDS);
+                    client.setWriteTimeout(20, TimeUnit.SECONDS);
+                    return client;
+                }
+            });
+
+            // Get the remote table instance to use.
+            layoutTable = mClient.getTable("layoutTable", LayoutItem.class);
+
+            //Init local storage
+            initLocalStore().get();
+
+            // Load the items from the mobile app backend.
+            refreshItemsFromTable();
+
+            mAdapter = new LayoutItemAdapter(this, R.layout.row_layout_to_do);
+            ListView listViewToDo = (ListView) findViewById(R.id.layoutViewToDo);
+            listViewToDo.setAdapter(mAdapter);
+
+        } catch (MalformedURLException e) {
+            createAndShowDialog(new Exception("There was an error creating the Mobile Service. Verify the URL"), "Error");
+        } catch (Exception e) {
+            createAndShowDialog(e, "Error");
+        }
     }
 
+
+    public void checkItemInTable(LayoutItem item) throws ExecutionException, InterruptedException {
+        layoutTable.update(item).get();
+    }
+
+    public void checkItem(final LayoutItem item) {
+        if (mClient == null) {
+            return;
+        }
+
+
+        AsyncTask<Void, Void, Void> task = new AsyncTask<Void, Void, Void>(){
+            @Override
+            protected Void doInBackground(Void... params) {
+                try {
+                    checkItemInTable(item);
+                    if(item.isComplete()){
+                        LayoutID = item.getLID();
+                    }
+
+                    //below removes item
+//                    runOnUiThread(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            if (item.isComplete()) {
+//                              mAdapter.remove(item);
+//                            }
+//                        }
+//                    });
+                } catch (final Exception e) {
+                    createAndShowDialogFromTask(e, "Error");
+                }
+
+                return null;
+            }
+        };
+
+        runAsyncTask(task);
+
+    }
+
+
+    private void createAndShowDialogFromTask(final Exception exception, String title) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                createAndShowDialog(exception, "Error");
+            }
+        });
+    }
+
+    private void createAndShowDialog(Exception exception, String title) {
+        Throwable ex = exception;
+        if(exception.getCause() != null){
+            ex = exception.getCause();
+        }
+        createAndShowDialog(ex.getMessage(), title);
+    }
+    private void createAndShowDialog(final String message, final String title) {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setMessage(message);
+        builder.setTitle(title);
+        builder.create().show();
+    }
+
+    /**
+     * Initializes the activity menu
+     */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.layout_menu_todo, menu);
+        return true;
+    }
+
+    /**
+     * Select an option from the menu
+     */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.menu_refresh) {
+            refreshItemsFromTable();
+        }
+
+        return true;
+    }
+
+
+
+    //allows for async task run by the appropriate executor
+    private AsyncTask<Void, Void, Void> runAsyncTask(AsyncTask<Void, Void, Void> task) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+            return task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+        } else {
+            return task.execute();
+        }
+    }
+
+
+
+    private void refreshItemsFromTable() {
+
+        // Get the layout names that for the user and add them in the
+        // adapter
+
+        AsyncTask<Void, Void, Void> task = new AsyncTask<Void, Void, Void>(){
+            @Override
+            protected Void doInBackground(Void... params) {
+
+                try {
+                    final List<LayoutItem> results = refreshItemsFromMobileServiceTable();
+                    //Offline Sync
+                    //final List<ToDoItem> results = refreshItemsFromMobileServiceTableSyncTable();
+
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            mAdapter.clear();
+                            for (LayoutItem item: results) {
+                                mAdapter.add(item);
+                            }
+                        }
+                    });
+                } catch (final Exception e){
+                    createAndShowDialogFromTask(e, "Error");
+                }
+
+                return null;
+            }
+        };
+
+        runAsyncTask(task);
+    }
+
+    private List<LayoutItem> refreshItemsFromMobileServiceTable() throws ExecutionException, InterruptedException {
+    //search the database for any objects that have the correct userID (From this device)
+          List<LayoutItem> results =  layoutTable
+                                     .where()
+                                     .field("userID").eq(devID)
+                                     .execute()
+                                     .get();
+    //initialize blank array of strings, everytime we see a layoutID more than once, we remove that layout from the  display
+          List<String> copies = new ArrayList<String>();
+          for(LayoutItem item : results){
+              if(copies.contains(item.getLName())){
+                  results.remove(item);
+              }
+              else {
+                  copies.add(item.getLName());
+              }
+          }
+          return results;
+    }
+
+
+
+    private AsyncTask<Void, Void, Void> initLocalStore() throws MobileServiceLocalStoreException, ExecutionException, InterruptedException {
+
+        AsyncTask<Void, Void, Void> task = new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected Void doInBackground(Void... params) {
+                try {
+
+                    MobileServiceSyncContext syncContext = mClient.getSyncContext();
+
+                    if (syncContext.isInitialized())
+                        return null;
+
+                    SQLiteLocalStore localStore = new SQLiteLocalStore(mClient.getContext(), "OfflineStore", null, 1);
+
+                    Map<String, ColumnDataType> tableDefinition = new HashMap<String, ColumnDataType>();
+                    tableDefinition.put("id", ColumnDataType.String);
+                    tableDefinition.put("complete", ColumnDataType.Boolean);
+                    tableDefinition.put("layoutID", ColumnDataType.String);
+                    tableDefinition.put("layoutName", ColumnDataType.String);
+                    tableDefinition.put("userID", ColumnDataType.String);
+
+                    localStore.defineTable("LayoutItem", tableDefinition);
+
+                    SimpleSyncHandler handler = new SimpleSyncHandler();
+
+                    syncContext.initialize(localStore, handler).get();
+
+                } catch (final Exception e) {
+                    createAndShowDialogFromTask(e, "Error");
+                }
+
+                return null;
+            }
+        };
+
+        return runAsyncTask(task);
+    }
+
+
+    private class ProgressFilter implements ServiceFilter {
+
+        @Override
+        public ListenableFuture<ServiceFilterResponse> handleRequest(ServiceFilterRequest request, NextServiceFilterCallback nextServiceFilterCallback) {
+
+            final SettableFuture<ServiceFilterResponse> resultFuture = SettableFuture.create();
+
+
+            runOnUiThread(new Runnable() {
+
+                @Override
+                public void run() {
+                    if (mProgressBar != null) mProgressBar.setVisibility(ProgressBar.VISIBLE);
+                }
+            });
+
+            ListenableFuture<ServiceFilterResponse> future = nextServiceFilterCallback.onNext(request);
+
+            Futures.addCallback(future, new FutureCallback<ServiceFilterResponse>() {
+                @Override
+                public void onFailure(Throwable e) {
+                    resultFuture.setException(e);
+                }
+
+                @Override
+                public void onSuccess(ServiceFilterResponse response) {
+                    runOnUiThread(new Runnable() {
+
+                        @Override
+                        public void run() {
+                            if (mProgressBar != null) mProgressBar.setVisibility(ProgressBar.GONE);
+                        }
+                    });
+
+                    resultFuture.set(response);
+                }
+            });
+
+            return resultFuture;
+        }
+    }
+
+
+    public void createNewLayout(View view) {
+
+        if (mClient == null) {
+            return;
+        }
+
+        if(checkValue(m_Text)) {
+
+            final LayoutItem newItem = new LayoutItem();
+            newItem.setLID(generateLayoutID());
+            newItem.setLName(m_Text);
+            newItem.setComplete(false);
+            newItem.setUser(devID);
+
+            AsyncTask<Void, Void, Void> task = new AsyncTask<Void, Void, Void>() {
+                @Override
+                protected Void doInBackground(Void... params) {
+                    try {
+                        final LayoutItem entity = addItemInTable(newItem);
+
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                if (!entity.isComplete()) {
+                                    mAdapter.add(entity);
+                                }
+                            }
+                        });
+                    } catch (final Exception e) {
+                        createAndShowDialogFromTask(e, "Error");
+                    }
+                    return null;
+                }
+            };
+
+            runAsyncTask(task);
+        }
+        else
+            return;
+    }
+
+
+
+    public LayoutItem addItemInTable(LayoutItem item) throws ExecutionException, InterruptedException {
+        LayoutItem entity = layoutTable.insert(item).get();
+        return entity;
+    }
+
+    public boolean checkValue(String input){
+        if(input!= null && input.matches("\\A\\p{ASCII}*\\z")){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    public String generateLayoutID() {
+        Random rnd = new Random();
+        int number = rnd.nextInt(999999);
+        // this will convert any number sequence into 6 character.
+        return String.format("%06d", number);
+    }
+
+    public void generateLayoutName(View view) {
+        mTextEdit.setVisibility(EditText.VISIBLE);
+        mButton.setVisibility(Button.VISIBLE);
+
+    }
+    public void getInput(View view){
+        m_Text = mTextEdit.getText().toString();
+        mTextEdit.setVisibility(EditText.GONE);
+        mButton.setVisibility(Button.GONE);
+        createNewLayout(view);
+    }
 
     public void launchLayoutActivity(View view) {
-        Intent LayoutIntent = new Intent(this, LayoutActivity.class);
-        startActivity(LayoutIntent);
+        Intent layoutIntent = new Intent(this, LayoutActivity.class);
+
+        //Create the bundle
+        Bundle bundle = new Bundle();
+
+        //Add data to bundle
+        bundle.putString("LayoutID", LayoutID);
+        bundle.putString("devID", devID);
+
+        //Add the bundle to the intent
+        layoutIntent.putExtras(bundle);
+
+        //Fire menu activity
+        startActivityForResult(layoutIntent, 1);
     }
+
+
+
 }
+
+

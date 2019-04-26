@@ -14,7 +14,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginStart="30dp"
         android:text="@string/settings"
-        android:onClick="launchSecondActivity"
+        android:onClick="launchPmView"
         android:layout_marginLeft="30dp" />
 
     <Button
@@ -28,7 +28,8 @@
         android:text="@string/time1"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="5dp"
-        android:onClick="launchMainActivity" />
+        android:onClick="onClick" />
+    
     <Button
         android:id="@+id/btime2"
         style="@android:style/Widget.Button"
@@ -39,7 +40,9 @@
         android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
         android:text="@string/time2"
-        android:layout_toRightOf="@+id/btime1" />
+        android:layout_toRightOf="@+id/btime1"
+        android:onClick="onClick" />
+    
     <Button
         android:id="@+id/btime3"
         style="@android:style/Widget.Button"
@@ -50,7 +53,8 @@
         android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
         android:text="@string/time3"
-        android:layout_toRightOf="@+id/btime2" />
+        android:layout_toRightOf="@+id/btime2"
+        android:onClick="onClick" />
 
     <Button
         android:id="@+id/btime4"
@@ -62,7 +66,8 @@
         android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
         android:text="@string/time4"
-        android:layout_toRightOf="@+id/btime3" />
+        android:layout_toRightOf="@+id/btime3" 
+        android:onClick="onClick" />
 
 
     <!--     -->
@@ -78,7 +83,9 @@
         android:layout_alignEnd="@id/btime1"
         android:text="@string/time5"
         android:layout_alignLeft="@id/btime1"
-        android:layout_alignRight="@id/btime1" />
+        android:layout_alignRight="@id/btime1"
+        android:onClick="onClick"/>
+
     <Button
         android:id="@+id/btime6"
         style="@android:style/Widget.Button"
@@ -92,7 +99,8 @@
         android:text="@string/time6"
         android:layout_toRightOf="@+id/btime5"
         android:layout_alignLeft="@id/btime2"
-        android:layout_alignRight="@id/btime2" />
+        android:layout_alignRight="@id/btime2"
+        android:onClick="onClick"/>
     <Button
         android:id="@+id/btime7"
         style="@android:style/Widget.Button"
@@ -106,7 +114,8 @@
         android:text="@string/time7"
         android:layout_toRightOf="@+id/btime6"
         android:layout_alignRight="@id/btime3"
-        android:layout_alignLeft="@id/btime3" />
+        android:layout_alignLeft="@id/btime3"
+        android:onClick="onClick" />
 
     <Button
         android:id="@+id/btime8"
@@ -121,7 +130,8 @@
         android:text="@string/time8"
         android:layout_toRightOf="@+id/btime7"
         android:layout_alignLeft="@id/btime4"
-        android:layout_alignRight="@id/btime4" />
+        android:layout_alignRight="@id/btime4"
+        android:onClick="onClick" />
 
 
     <!--     -->
@@ -137,7 +147,9 @@
         android:layout_alignEnd="@id/btime5"
         android:text="@string/time9"
         android:layout_alignLeft="@id/btime5"
-        android:layout_alignRight="@id/btime5" />
+        android:layout_alignRight="@id/btime5"
+        android:onClick="onClick" />
+
     <Button
         android:id="@+id/btime10"
         style="@android:style/Widget.Button"
@@ -148,7 +160,8 @@
         android:layout_marginTop="10dp"
         android:layout_alignStart="@id/btime6"
         android:layout_alignEnd="@id/btime6"
-        android:text="@string/time10"/>
+        android:text="@string/time10"
+        android:onClick="onClick" />
     <Button
         android:id="@+id/btime11"
         style="@android:style/Widget.Button"
@@ -159,7 +172,8 @@
         android:layout_marginTop="10dp"
         android:layout_alignStart="@id/btime7"
         android:layout_alignEnd="@id/btime7"
-        android:text="@string/time11"/>
+        android:text="@string/time11"
+        android:onClick="onClick" />
 
     <Button
         android:id="@+id/btime12"
@@ -171,7 +185,8 @@
         android:layout_marginTop="10dp"
         android:layout_alignStart="@id/btime8"
         android:layout_alignEnd="@id/btime8"
-        android:text="@string/time12"/>
+        android:text="@string/time12"
+        android:onClick="onClick" />
 
 
     <!--     -->
@@ -185,7 +200,8 @@
         android:layout_marginTop="10dp"
         android:layout_alignStart="@id/btime9"
         android:layout_alignEnd="@id/btime9"
-        android:text="@string/time13"/>
+        android:text="@string/time13"
+        android:onClick="onClick" />
     <Button
         android:id="@+id/btime14"
         style="@android:style/Widget.Button"
@@ -196,7 +212,8 @@
         android:layout_marginTop="10dp"
         android:layout_alignStart="@id/btime10"
         android:layout_alignEnd="@id/btime10"
-        android:text="@string/time14"/>
+        android:text="@string/time14"
+        android:onClick="onClick" />
     <Button
         android:id="@+id/btime15"
         style="@android:style/Widget.Button"
@@ -207,7 +224,8 @@
         android:layout_marginTop="10dp"
         android:layout_alignStart="@id/btime11"
         android:layout_alignEnd="@id/btime11"
-        android:text="@string/time15"/>
+        android:text="@string/time15"
+        android:onClick="onClick" />
 
     <Button
         android:id="@+id/btime16"
@@ -219,7 +237,8 @@
         android:layout_marginTop="10dp"
         android:layout_alignStart="@id/btime12"
         android:layout_alignEnd="@id/btime12"
-        android:text="@string/time16"/>
+        android:text="@string/time16"
+        android:onClick="onClick" />
 
 
     <!--     -->
@@ -233,7 +252,8 @@
         android:layout_marginTop="10dp"
         android:layout_alignStart="@id/btime13"
         android:layout_alignEnd="@id/btime13"
-        android:text="@string/time17"/>
+        android:text="@string/time17"
+        android:onClick="onClick" />
     <Button
         android:id="@+id/btime18"
         style="@android:style/Widget.Button"
@@ -244,7 +264,8 @@
         android:layout_marginTop="10dp"
         android:layout_alignStart="@id/btime14"
         android:layout_alignEnd="@id/btime14"
-        android:text="@string/time18"/>
+        android:text="@string/time18"
+        android:onClick="onClick" />
     <Button
         android:id="@+id/btime19"
         style="@android:style/Widget.Button"
@@ -255,7 +276,8 @@
         android:layout_marginTop="10dp"
         android:layout_alignStart="@id/btime15"
         android:layout_alignEnd="@id/btime15"
-        android:text="@string/time19"/>
+        android:text="@string/time19"
+        android:onClick="onClick" />
 
     <Button
         android:id="@+id/btime20"
@@ -267,7 +289,8 @@
         android:layout_marginTop="10dp"
         android:layout_alignStart="@id/btime16"
         android:layout_alignEnd="@id/btime16"
-        android:text="@string/time20"/>
+        android:text="@string/time20"
+        android:onClick="onClick" />
 
 
     <!--     -->
@@ -281,7 +304,8 @@
         android:layout_marginTop="10dp"
         android:layout_alignStart="@id/btime17"
         android:layout_alignEnd="@id/btime17"
-        android:text="@string/time21"/>
+        android:text="@string/time21"
+        android:onClick="onClick" />
     <Button
         android:id="@+id/btime22"
         style="@android:style/Widget.Button"
@@ -292,7 +316,8 @@
         android:layout_marginTop="10dp"
         android:layout_alignStart="@id/btime18"
         android:layout_alignEnd="@id/btime18"
-        android:text="@string/time22"/>
+        android:text="@string/time22"
+        android:onClick="onClick" />
     <Button
         android:id="@+id/btime23"
         style="@android:style/Widget.Button"
@@ -303,7 +328,8 @@
         android:layout_marginTop="10dp"
         android:layout_alignStart="@id/btime19"
         android:layout_alignEnd="@id/btime19"
-        android:text="@string/time23"/>
+        android:text="@string/time23"
+        android:onClick="onClick" />
 
     <Button
         android:id="@+id/btime24"
@@ -315,7 +341,8 @@
         android:layout_marginTop="10dp"
         android:layout_alignStart="@id/btime20"
         android:layout_alignEnd="@id/btime20"
-        android:text="@string/time24"/>
+        android:text="@string/time24"
+        android:onClick="onClick" />
 
 
 

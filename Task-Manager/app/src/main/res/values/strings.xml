@@ -66,4 +66,8 @@
     <string name="add_button_text">Add</string>
     <string name="checkbox_text">Item Text</string>
     <string name="menu_refresh">Refresh</string>
+    <string name="create">Create</string>
+    <string name="menu_title">Layout Menu</string>
+    <string name="open">Open</string>
+    <string name="confirm">Confirm</string>
 </resources>

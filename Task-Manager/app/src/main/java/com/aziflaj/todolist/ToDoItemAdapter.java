@@ -50,10 +50,9 @@ public class ToDoItemAdapter extends ArrayAdapter<ToDoItem> {
         final CheckBox checkBox = (CheckBox) row.findViewById(R.id.checkToDoItem);
         checkBox.setText(currentItem.getText());
         checkBox.setChecked(false);
-        checkBox.setEnabled(true);
+        //checkBox.setEnabled(true);
 
         checkBox.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View arg0) {
                 if (checkBox.isChecked()) {

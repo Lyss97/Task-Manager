@@ -1,7 +1,7 @@
 package com.aziflaj.todolist;
 
 /**
- * Represents an item in a ToDo list
+ * Represents an item in a To Do list
  */
 public class ToDoItem {
 

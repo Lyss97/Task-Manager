@@ -883,6 +883,7 @@ id center
 id center_horizontal
 id center_vertical
 id chains
+id checkLayoutItem
 id checkToDoItem
 id checkbox
 id chronometer
@@ -892,6 +893,7 @@ id collapseActionView
 id container
 id contentPanel
 id coordinator
+id createBtn
 id custom
 id customPanel
 id decor_content_parent
@@ -932,9 +934,12 @@ id italic
 id item_touch_helper_previous_elevation
 id joinBtn
 id largeLabel
+id layoutViewToDo
+id layoutmenu_refresh
 id left
 id line1
 id line3
+id linearlayout
 id listMode
 id listViewToDo
 id list_item
@@ -950,11 +955,14 @@ id mini
 id multiply
 id navigation_header_container
 id never
+id newLayoutButton
+id newLayoutName
 id none
 id normal
 id notification_background
 id notification_main_column
 id notification_main_column_container
+id openBtn
 id packed
 id parallax
 id parent
@@ -988,7 +996,6 @@ id search_mag_icon
 id search_plate
 id search_src_text
 id search_voice_btn
-id selectBtn
 id select_dialog_listview
 id shortcut
 id showCustom
@@ -1022,7 +1029,6 @@ id textViewTitle
 id text_input_password_toggle
 id textinput_counter
 id textinput_error
-id textview
 id time
 id title
 id titleDividerNoCustom
@@ -1116,6 +1122,7 @@ layout notification_template_media
 layout notification_template_media_custom
 layout notification_template_part_chronometer
 layout notification_template_part_time
+layout row_layout_to_do
 layout row_list_to_do
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
@@ -1124,6 +1131,7 @@ layout support_simple_spinner_dropdown_item
 layout task_layout
 layout tooltip
 menu activity_todo
+menu layout_menu_todo
 menu main_menu
 mipmap ic_launcher
 string Add_comment
@@ -1167,9 +1175,13 @@ string appbar_scrolling_view_behavior
 string bottom_sheet_behavior
 string character_counter_pattern
 string checkbox_text
+string confirm
+string create
 string join
 string menu
 string menu_refresh
+string menu_title
+string open
 string password_toggle_content_description
 string path_password_eye
 string path_password_eye_mask_strike_through
