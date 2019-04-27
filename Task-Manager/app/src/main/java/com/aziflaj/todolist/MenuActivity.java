@@ -81,7 +81,7 @@ public class MenuActivity extends AppCompatActivity {
     private String LayoutID;
     private String m_Text = "";
     private String LayoutName;
-
+    private String flag = "";
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
@@ -283,7 +283,7 @@ public class MenuActivity extends AppCompatActivity {
                                      .field("userID").eq(devID)
                                      .execute()
                                      .get();
-    //initialize blank array of strings, everytime we see a layoutID more than once, we remove that layout from the  display
+    //initialize blank array of strings, every time we see a layoutID more than once, we remove that layout from the  display
           List<String> copies = new ArrayList<String>();
           for(LayoutItem item : results){
               if(copies.contains(item.getLName())){
@@ -335,6 +335,7 @@ public class MenuActivity extends AppCompatActivity {
 
         return runAsyncTask(task);
     }
+
 
 
     private class ProgressFilter implements ServiceFilter {
@@ -447,16 +448,93 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     public void generateLayoutName(View view) {
+        flag = "create";
         mTextEdit.setVisibility(EditText.VISIBLE);
         mButton.setVisibility(Button.VISIBLE);
-
+        //makes the input visible, when confirm is pressed, getInputL is called.
     }
-    public void getInput(View view){
+
+    public void getInputL(View view){
         m_Text = mTextEdit.getText().toString();
         mTextEdit.setVisibility(EditText.GONE);
         mButton.setVisibility(Button.GONE);
-        createNewLayout(view);
+        if(flag == "create") {
+            createNewLayout(view);
+        }
+        else if(flag == "join"){
+            joinNewLayout(view);
+        }
     }
+
+
+    public void joinNewLayout(View view) {
+        final LayoutItem joinLayout = new LayoutItem();
+
+        try {
+            AsyncTask<Void, Void, Void> task = new AsyncTask<Void, Void, Void>() {
+                @Override
+                protected Void doInBackground(Void... params) {
+                    Log.d("is it", "FROZEN?");
+                    try {
+                        List<LayoutItem> results = layoutTable
+                                .where()
+                                .field("layoutID").eq(m_Text)
+                                .execute()
+                                .get();
+                        Log.d("is it", "FROZEN?   2");
+                        if (!results.isEmpty()) {
+
+                            joinLayout.setUser(devID);
+                            joinLayout.setLID(m_Text);
+                            joinLayout.setLName(results.get(0).getLName());
+
+
+                            try {
+                                final LayoutItem entity = addItemInTable(joinLayout);
+
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        if (!entity.isComplete()) {
+                                            mAdapter.add(entity);
+                                        }
+                                    }
+                                });
+                            } catch (final Exception e) {
+                                createAndShowDialogFromTask(e, "Error");
+                            }
+
+                        } else {
+                            createAndShowDialog("Cannot Join: ", "Incorrect Layout ID");
+                        }
+
+                        return null;
+                    } catch (final Exception e) {
+                        createAndShowDialogFromTask(e, "Error");
+                    }
+
+                    return null;
+                }
+
+            };
+            runAsyncTask(task);
+        } catch (final Exception e) {
+            createAndShowDialogFromTask(e, "Error");
+        }
+
+    }
+
+
+
+
+    public void generateLayoutID(View view) {
+        flag = "join";
+        mTextEdit.setVisibility(EditText.VISIBLE);
+        mButton.setVisibility(Button.VISIBLE);
+        //makes the input visible, when confirm is pressed, getInputL is called.
+
+    }
+
 
     public void launchLayoutActivity(View view) {
         Intent layoutIntent = new Intent(this, LayoutActivity.class);
