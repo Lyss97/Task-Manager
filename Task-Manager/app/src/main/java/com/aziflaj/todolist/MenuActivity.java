@@ -157,9 +157,9 @@ public class MenuActivity extends AppCompatActivity {
             protected Void doInBackground(Void... params) {
                 try {
                     checkItemInTable(item);
-                    if(item.isComplete()){
                         LayoutID = item.getLID();
-                    }
+                        Log.d("check LID", LayoutID);
+
 
                     //below removes item
 //                    runOnUiThread(new Runnable() {
@@ -389,6 +389,8 @@ public class MenuActivity extends AppCompatActivity {
 
             final LayoutItem newItem = new LayoutItem();
             newItem.setLID(generateLayoutID());
+            LayoutID = newItem.getLID();
+            Log.d("check", LayoutID);
             newItem.setLName(m_Text);
             newItem.setComplete(false);
             newItem.setUser(devID);
@@ -461,14 +463,17 @@ public class MenuActivity extends AppCompatActivity {
         Bundle bundle = new Bundle();
 
         //Add data to bundle
+        Log.d("LID SHOULD BE ", LayoutID);
+
         bundle.putString("LayoutID", LayoutID);
         bundle.putString("devID", devID);
 
+        Log.d("bundle looks like", bundle.getString("LayoutID"));
         //Add the bundle to the intent
         layoutIntent.putExtras(bundle);
 
         //Fire menu activity
-        startActivityForResult(layoutIntent, 1);
+        startActivity(layoutIntent);
     }
 
 

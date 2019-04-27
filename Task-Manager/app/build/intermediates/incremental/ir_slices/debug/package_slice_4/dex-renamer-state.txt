@@ -1,4 +1,1 @@
-#Thu Apr 25 20:19:21 PDT 2019
-base.0=C\:\\Users\\Samuel\\Documents\\test\\Task-Manager\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\4
-path.0=classes.dex
-renamed.0=classes.dex
+#Fri Apr 26 17:10:34 PDT 2019
