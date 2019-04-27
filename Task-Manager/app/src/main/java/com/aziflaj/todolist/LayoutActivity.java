@@ -14,7 +14,7 @@ public class LayoutActivity extends AppCompatActivity {
     private String devID;
     private String LayoutID;
     private String blockVal;
-
+    private String LayoutName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +23,8 @@ public class LayoutActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         LayoutID = bundle.getString("LayoutID");
         devID = bundle.getString("devID");
+        LayoutName = bundle.getString("LayoutName");
+        this.setTitle(LayoutName+": " +LayoutID);
 
         Log.d("check", LayoutID);
     }
@@ -51,8 +53,10 @@ public class LayoutActivity extends AppCompatActivity {
         Bundle bundle = new Bundle();
 
         //Add data to bundle
+        bundle.putString ("LayoutName", LayoutName);
         bundle.putString("layoutID", LayoutID);
         bundle.putString("blockVal", blockVal);
+
         //Add the bundle to the intent
         taskIntent.putExtras(bundle);
 

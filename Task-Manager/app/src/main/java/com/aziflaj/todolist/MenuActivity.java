@@ -80,7 +80,7 @@ public class MenuActivity extends AppCompatActivity {
     private String devID;
     private String LayoutID;
     private String m_Text = "";
-
+    private String LayoutName;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -158,6 +158,7 @@ public class MenuActivity extends AppCompatActivity {
                 try {
                     checkItemInTable(item);
                         LayoutID = item.getLID();
+                        LayoutName = item.getLName();
                         Log.d("check LID", LayoutID);
 
 
@@ -392,6 +393,7 @@ public class MenuActivity extends AppCompatActivity {
             LayoutID = newItem.getLID();
             Log.d("check", LayoutID);
             newItem.setLName(m_Text);
+            LayoutName = m_Text;
             newItem.setComplete(false);
             newItem.setUser(devID);
 
@@ -463,12 +465,11 @@ public class MenuActivity extends AppCompatActivity {
         Bundle bundle = new Bundle();
 
         //Add data to bundle
-        Log.d("LID SHOULD BE ", LayoutID);
 
         bundle.putString("LayoutID", LayoutID);
         bundle.putString("devID", devID);
+        bundle.putString("LayoutName", LayoutName);
 
-        Log.d("bundle looks like", bundle.getString("LayoutID"));
         //Add the bundle to the intent
         layoutIntent.putExtras(bundle);
 
