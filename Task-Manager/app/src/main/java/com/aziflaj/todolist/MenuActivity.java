@@ -469,6 +469,7 @@ public class MenuActivity extends AppCompatActivity {
         else if(flag == "join"){
             joinNewLayout(view);
         }
+        mTextEdit.setText("");
     }
 
 

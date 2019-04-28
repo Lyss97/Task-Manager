@@ -12,6 +12,7 @@ import java.util.concurrent.TimeUnit;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -20,9 +21,12 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.RadioGroup;
 
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
@@ -87,9 +91,17 @@ public class ToDoActivity extends AppCompatActivity {
     private String LayoutID;
     private String LayoutName;
     private String blockVal;
+    private String TaskID;
+    private String currentStatus;
+    private String flag;
+
+    //list of statuses available to a task
     List<String> Status = Arrays.asList("New", "In Progress", "Complete");
 
-
+    //hidden visual elements
+    private EditText mEditText;
+    private Button mAddButton;
+    private RadioGroup mRadioGroup;
 
     /**
      * Initializes the activity
@@ -98,6 +110,8 @@ public class ToDoActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_to_do);
+
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
         Bundle bundle = getIntent().getExtras();
 
@@ -112,9 +126,15 @@ public class ToDoActivity extends AppCompatActivity {
         this.setTitle(LayoutName+": " +blockVal);
 
         mProgressBar = (ProgressBar) findViewById(R.id.loadingProgressBar);
+        mEditText = (EditText) findViewById(R.id.newTaskName);
+        mAddButton = (Button) findViewById(R.id.newTaskButton);
+        mRadioGroup = (RadioGroup) findViewById(R.id.radio_group);
 
         // Initialize the progress bar
         mProgressBar.setVisibility(ProgressBar.GONE);
+        mEditText.setVisibility(EditText.GONE);
+        mAddButton.setVisibility(Button.GONE);
+        mRadioGroup.setVisibility(RadioGroup.GONE);
 
         try {
             // Create the client instance, using the provided mobile app URL.
@@ -141,8 +161,6 @@ public class ToDoActivity extends AppCompatActivity {
 
             //Init local storage
             initLocalStore().get();
-
-            mTextNewToDo = (EditText) findViewById(R.id.textNewToDo);
 
             // Create an adapter to bind the items with the view
             mAdapter = new ToDoItemAdapter(this, R.layout.row_list_to_do);
@@ -190,9 +208,10 @@ public class ToDoActivity extends AppCompatActivity {
         if (mClient == null) {
             return;
         }
-
         // Set the item as completed and update it in the table
-        item.setComplete(true);
+        if(item.getStatus() == "Complete") {
+            item.setComplete(true);
+        }
 
         AsyncTask<Void, Void, Void> task = new AsyncTask<Void, Void, Void>(){
             @Override
@@ -200,14 +219,7 @@ public class ToDoActivity extends AppCompatActivity {
                 try {
 
                     checkItemInTable(item);
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            if (item.isComplete()) {
-                                mAdapter.remove(item);
-                            }
-                        }
-                    });
+                    TaskID = item.getTID();
                 } catch (final Exception e) {
                     createAndShowDialogFromTask(e, "Error");
                 }
@@ -244,7 +256,7 @@ public class ToDoActivity extends AppCompatActivity {
         // Create a new item
         final ToDoItem item = new ToDoItem();
 
-        item.setText(mTextNewToDo.getText().toString());
+        item.setText(mEditText.getText().toString());
         item.setComplete(false);
         item.setTID(generateTaskID());
         item.setBV(blockVal);
@@ -274,8 +286,6 @@ public class ToDoActivity extends AppCompatActivity {
         };
 
         runAsyncTask(task);
-
-        mTextNewToDo.setText("");
     }
 
     /**
@@ -376,9 +386,15 @@ public class ToDoActivity extends AppCompatActivity {
                     SQLiteLocalStore localStore = new SQLiteLocalStore(mClient.getContext(), "OfflineStore", null, 1);
 
                     Map<String, ColumnDataType> tableDefinition = new HashMap<String, ColumnDataType>();
+
                     tableDefinition.put("id", ColumnDataType.String);
-                    tableDefinition.put("text", ColumnDataType.String);
+                    tableDefinition.put("taskName", ColumnDataType.String);
                     tableDefinition.put("complete", ColumnDataType.Boolean);
+
+                    tableDefinition.put("taskStatus", ColumnDataType.String);
+                    tableDefinition.put("LayoutID", ColumnDataType.String);
+                    tableDefinition.put("taskID", ColumnDataType.String);
+                    tableDefinition.put("blockVal", ColumnDataType.String);
 
                     localStore.defineTable("ToDoItem", tableDefinition);
 
@@ -484,6 +500,53 @@ public class ToDoActivity extends AppCompatActivity {
         }
     }
 
+    public void setIP(View view) {
+        currentStatus = Status.get(1);
+    }
+
+    public void setComp(View view){
+        currentStatus = Status.get(2);
+    }
+
+    public void removeTask(View view) {
+        try {
+            AsyncTask<Void, Void, Void> task = new AsyncTask<Void, Void, Void>() {
+                @Override
+                protected Void doInBackground(Void... params) {
+                    Log.d("is it", "FROZEN?");
+                    try {
+                        List<ToDoItem> results = mToDoTable
+                                .where()
+                                .field("taskID").eq(TaskID)
+                                .execute()
+                                .get();
+                        Log.d("is it", "FROZEN?   2");
+                        if (!results.isEmpty()) {
+                            mToDoTable.delete(results.get(0));
+                            refreshItemsFromTable();
+
+                        } else {
+                            createAndShowDialog("Please reload your menu.", "Error");
+                        }
+
+                        return null;
+                    } catch (final Exception e) {
+                        createAndShowDialogFromTask(e, "Error");
+                    }
+
+                    return null;
+                }
+
+            };
+            runAsyncTask(task);
+        } catch (final Exception e) {
+            createAndShowDialogFromTask(e, "Error");
+        }
+
+    }
+
+
+
     private class ProgressFilter implements ServiceFilter {
 
         @Override
@@ -526,6 +589,72 @@ public class ToDoActivity extends AppCompatActivity {
         }
     }
 
+    public void createTask(View view) {
+        flag = "create";
+        mEditText.setVisibility(EditText.VISIBLE);
+        mAddButton.setVisibility(Button.VISIBLE);
+    }
+
+    public void getInputT(View view){
+
+        //hide the button
+        mAddButton.setVisibility(Button.GONE);
+
+        if(flag == "create"){
+            mEditText.setVisibility(EditText.GONE);
+            addItem(view);
+            mEditText.setText("");
+        }
+        else if(flag == "stat"){
+            mRadioGroup.setVisibility(RadioGroup.GONE);
+            updateItemStatus(view);
+            currentStatus = "New";
+        }
+
+    }
+
+
+    public void updateItemStatus(View view) {
+        try {
+            AsyncTask<Void, Void, Void> task = new AsyncTask<Void, Void, Void>() {
+                @Override
+                protected Void doInBackground(Void... params) {
+
+                    try {
+                        List<ToDoItem> results = mToDoTable
+                                .where()
+                                .field("taskID").eq(TaskID)
+                                .execute()
+                                .get();
+                        if (!results.isEmpty()) {
+                            ToDoItem entity = new ToDoItem();
+                            entity = results.get(0);
+                            entity.setTStatus(currentStatus);
+                            if(currentStatus == "Complete"){
+                                entity.setComplete(true);
+                            }
+                            mToDoTable.update(entity);
+                            refreshItemsFromTable();
+
+                        } else {
+                            createAndShowDialog("Please reload your menu.", "Error");
+                        }
+
+                        return null;
+                    } catch (final Exception e) {
+                        createAndShowDialogFromTask(e, "Error");
+                    }
+
+                    return null;
+                }
+
+            };
+
+            runAsyncTask(task);
+        } catch (final Exception e) {
+            createAndShowDialogFromTask(e, "Error");
+        }
+    }
 
     public String generateTaskID() {
         Random rnd = new Random();
@@ -534,5 +663,31 @@ public class ToDoActivity extends AppCompatActivity {
         return String.format("%06d", number);
     }
 
+    public void updateStatus(View view) {
+        flag = "stat";
+        mRadioGroup.setVisibility(RadioGroup.VISIBLE);
+        mAddButton.setVisibility(Button.VISIBLE);
+    }
+
+
+    //once comment activity has been defined
+    public void launchCommentActivity(View view){
+
+//        Intent commentIntent = new Intent(this, CommentActivity.class);
+
+//        //Create the bundle
+//        Bundle bundle = new Bundle();
+
+        //Add data to bundle
+
+//        bundle.putString("TaskID", TaskID);
+//        bundle.putString("LayoutID", LayoutID);
+
+        //Add the bundle to the intent
+//        layoutIntent.putExtras(bundle);
+
+        //Fire menu activity
+//        startActivity(commentIntent);
+    }
 
 }
