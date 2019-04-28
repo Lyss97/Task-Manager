@@ -2,9 +2,11 @@ package com.aziflaj.todolist;
 
 
 import java.net.MalformedURLException;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 
@@ -85,7 +87,7 @@ public class ToDoActivity extends AppCompatActivity {
     private String LayoutID;
     private String LayoutName;
     private String blockVal;
-
+    List<String> Status = Arrays.asList("New", "In Progress", "Complete");
 
 
 
@@ -244,6 +246,10 @@ public class ToDoActivity extends AppCompatActivity {
 
         item.setText(mTextNewToDo.getText().toString());
         item.setComplete(false);
+        item.setTID(generateTaskID());
+        item.setBV(blockVal);
+        item.setTStatus(Status.get(0));
+        item.setLID(LayoutID);
 
         // Insert the new item
         AsyncTask<Void, Void, Void> task = new AsyncTask<Void, Void, Void>(){
@@ -327,8 +333,13 @@ public class ToDoActivity extends AppCompatActivity {
      */
 
     private List<ToDoItem> refreshItemsFromMobileServiceTable() throws ExecutionException, InterruptedException {
-        return mToDoTable.where().field("complete").
-                eq(val(false)).execute().get();
+        return mToDoTable
+                .where()
+                .field("LayoutID").eq(val(LayoutID))
+                .and()
+                .field("blockVal").eq(val(blockVal))
+                .execute()
+                .get();
     }
 
     //Offline Sync
@@ -514,4 +525,14 @@ public class ToDoActivity extends AppCompatActivity {
             return resultFuture;
         }
     }
+
+
+    public String generateTaskID() {
+        Random rnd = new Random();
+        int number = rnd.nextInt(999999);
+        // this will convert any number sequence into 6 character.
+        return String.format("%06d", number);
+    }
+
+
 }
