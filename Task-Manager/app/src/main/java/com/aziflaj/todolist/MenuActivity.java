@@ -552,20 +552,9 @@ public class MenuActivity extends AppCompatActivity {
                                 .get();
                         Log.d("is it", "FROZEN?   2");
                         if (!results.isEmpty()) {
-                            try {
-                                final LayoutItem entity = results.get(0);
-
-                                runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                            mAdapter.remove(entity);
-                                    }
-                                });
-                            } catch (final Exception e) {
-                                createAndShowDialogFromTask(e, "Error");
-                            }
-
                             layoutTable.delete(results.get(0));
+                            refreshItemsFromTable();
+
                         } else {
                             createAndShowDialog("Cannot Remove: ", "Error");
                         }

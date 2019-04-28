@@ -89,7 +89,6 @@ public class LayoutItemAdapter extends ArrayAdapter<LayoutItem> {
 
         return row;
     }
-
 }
 
 
