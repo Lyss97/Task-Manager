@@ -78,10 +78,11 @@ public class MenuActivity extends AppCompatActivity {
     private Button mButton;
 
     private String devID;
-    private String LayoutID;
+    private String LayoutID = "";
     private String m_Text = "";
     private String LayoutName;
     private String flag = "";
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
@@ -158,8 +159,9 @@ public class MenuActivity extends AppCompatActivity {
                 try {
                     checkItemInTable(item);
                         LayoutID = item.getLID();
+                        Log.d("LID of clicked: ", LayoutID);
                         LayoutName = item.getLName();
-                        Log.d("check LID", LayoutID);
+                        Log.d("Name of clicked: ", LayoutName);
 
 
                     //below removes item
@@ -532,6 +534,56 @@ public class MenuActivity extends AppCompatActivity {
         mTextEdit.setVisibility(EditText.VISIBLE);
         mButton.setVisibility(Button.VISIBLE);
         //makes the input visible, when confirm is pressed, getInputL is called.
+
+    }
+
+
+    public void deleteItem(View view) {
+        try {
+            AsyncTask<Void, Void, Void> task = new AsyncTask<Void, Void, Void>() {
+                @Override
+                protected Void doInBackground(Void... params) {
+                    Log.d("is it", "FROZEN?");
+                    try {
+                        List<LayoutItem> results = layoutTable
+                                .where()
+                                .field("layoutID").eq(LayoutID)
+                                .execute()
+                                .get();
+                        Log.d("is it", "FROZEN?   2");
+                        if (!results.isEmpty()) {
+                            try {
+                                final LayoutItem entity = results.get(0);
+
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                            mAdapter.remove(entity);
+                                    }
+                                });
+                            } catch (final Exception e) {
+                                createAndShowDialogFromTask(e, "Error");
+                            }
+
+                            layoutTable.delete(results.get(0));
+                        } else {
+                            createAndShowDialog("Cannot Remove: ", "Error");
+                        }
+
+                        return null;
+                    } catch (final Exception e) {
+                        createAndShowDialogFromTask(e, "Error");
+                    }
+
+                    return null;
+                }
+
+            };
+            runAsyncTask(task);
+        } catch (final Exception e) {
+            createAndShowDialogFromTask(e, "Error");
+        }
+
 
     }
 

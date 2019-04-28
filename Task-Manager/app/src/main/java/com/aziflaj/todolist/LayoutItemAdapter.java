@@ -39,7 +39,6 @@ public class LayoutItemAdapter extends ArrayAdapter<LayoutItem> {
     @Override
     public View getView(int position, View convertView, final ViewGroup parent) {
         View row = convertView;
-        Log.d("open view: ", "Success");
         final LayoutItem currentItem = getItem(position);
 
 
@@ -48,14 +47,14 @@ public class LayoutItemAdapter extends ArrayAdapter<LayoutItem> {
             LayoutInflater inflater = ((Activity) mContext).getLayoutInflater();
             row = inflater.inflate(mLayoutResourceId, parent, false);
         }
-        Log.d("layout: ", "Success");
+
         row.setTag(currentItem);
         final CheckBox checkBox = (CheckBox) row.findViewById(R.id.checkLayoutItem);
         checkBox.setText(currentItem.getLName());
         checkBox.setChecked(false);
         checkBox.setEnabled(true);
 
-        Log.d("set rows: ", "Success");
+
         checkBox.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -72,14 +71,13 @@ public class LayoutItemAdapter extends ArrayAdapter<LayoutItem> {
                         int size = vg.getChildCount();
 
                         //print to debug log how many list are in the view group
-                        //Log.d("check3", String.valueOf(size));
 
                         //for every list in the viewgroup
                         for (int i = 0; i < size; i++) {
                             View v = vg.getChildAt(i); //get that list
-                            //Log.d("check4", vg.getChildAt(i).toString());   <- print to debug log the list info
+
                             CheckBox cb = v.findViewById(R.id.checkLayoutItem); //get the checkbox in that list
-                            //Log.d("check7", cb.toString());                 <- print to debug log the checkbox info
+
                             if (!cb.equals(arg0)) { //if that checkbox isn't the one we just checked
                                 cb.setChecked(false); //uncheck it
                             }

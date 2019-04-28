@@ -6,12 +6,6 @@ package com.aziflaj.todolist;
 public class ToDoItem {
 
     /**
-     * Item text
-     */
-    @com.google.gson.annotations.SerializedName("text")
-    private String mText;
-
-    /**
      * Item Id
      */
     @com.google.gson.annotations.SerializedName("id")
@@ -22,6 +16,38 @@ public class ToDoItem {
      */
     @com.google.gson.annotations.SerializedName("complete")
     private boolean mComplete;
+
+    /**
+     * task ID
+     */
+    @com.google.gson.annotations.SerializedName("taskID")
+    private String tiText;
+
+    /**
+     * task Name
+     */
+    @com.google.gson.annotations.SerializedName("taskName")
+    private String mText;
+
+    /**
+     * task Status
+     */
+    @com.google.gson.annotations.SerializedName("taskStatus")
+    private String tsText;
+
+    /**
+     * LayoutID
+     */
+    @com.google.gson.annotations.SerializedName("LayoutID")
+    private String lText;
+
+    /**
+     * Item text
+     */
+    @com.google.gson.annotations.SerializedName("blockVal")
+    private String bvText;
+
+
 
     /**
      * ToDoItem constructor
@@ -46,30 +72,29 @@ public class ToDoItem {
     public ToDoItem(String text, String id) {
         this.setText(text);
         this.setId(id);
+
     }
 
-    /**
-     * Returns the item text
-     */
     public String getText() {
         return mText;
     }
 
-    /**
-     * Sets the item text
-     *
-     * @param text
-     *            text to set
-     */
-    public final void setText(String text) {
-        mText = text;
-    }
-
-    /**
-     * Returns the item id
-     */
     public String getId() {
         return mId;
+    }
+
+    public String getTID(){ return tiText;}
+
+    public String getStatus() {return tsText;}
+
+    public String getLID() { return lText;}
+
+    public String getBV() {return bvText;}
+
+
+
+    public final void setText(String text) {
+        mText = text;
     }
 
     /**

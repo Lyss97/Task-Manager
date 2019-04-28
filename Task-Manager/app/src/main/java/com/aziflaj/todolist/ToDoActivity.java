@@ -76,6 +76,17 @@ public class ToDoActivity extends Activity {
      */
     private ProgressBar mProgressBar;
 
+    /*
+     * To store LayoutID, LayoutName, and BlockVal from previous activity
+     */
+
+    private String LayoutID;
+    private String LayoutName;
+    private String blockVal;
+
+
+
+
     /**
      * Initializes the activity
      */
@@ -83,6 +94,14 @@ public class ToDoActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_to_do);
+
+        Bundle bundle = getIntent().getExtras();
+
+        LayoutID = bundle.getString("LayoutID");
+        blockVal = bundle.getString("blockVal");
+        LayoutName = bundle.getString("LayoutName");
+
+        this.setTitle(LayoutName+": " +blockVal);
 
         mProgressBar = (ProgressBar) findViewById(R.id.loadingProgressBar);
 
@@ -107,7 +126,7 @@ public class ToDoActivity extends Activity {
             });
 
             // Get the remote table instance to use.
-            mToDoTable = mClient.getTable(ToDoItem.class);
+            mToDoTable = mClient.getTable("taskTable",ToDoItem.class);
 
             // Offline sync table instance.
             //mToDoTable = mClient.getSyncTable("ToDoItem", ToDoItem.class);

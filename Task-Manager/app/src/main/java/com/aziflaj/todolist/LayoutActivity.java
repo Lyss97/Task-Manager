@@ -15,6 +15,7 @@ public class LayoutActivity extends AppCompatActivity {
     private String LayoutID;
     private String blockVal;
     private String LayoutName;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +27,7 @@ public class LayoutActivity extends AppCompatActivity {
         LayoutName = bundle.getString("LayoutName");
         this.setTitle(LayoutName+": " +LayoutID);
 
-        Log.d("check", LayoutID);
+
     }
 
     public void launchPmView(View view1) {

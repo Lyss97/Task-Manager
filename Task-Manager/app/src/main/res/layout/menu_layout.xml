@@ -64,7 +64,6 @@
 
     <Button
         android:id="@+id/openBtn"
-        android:onClick="launchLayoutActivity"
         style="@android:style/Widget.Button.Small"
         android:layout_width="80dp"
         android:layout_height="60dp"
@@ -72,7 +71,8 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="10dp"
         android:layout_marginBottom="20dp"
-        android:text="@string/open" />
+        android:text="@string/open"
+        android:onClick="launchLayoutActivity"/>
 
 
     <Button
@@ -84,7 +84,8 @@
         android:layout_toEndOf="@id/openBtn"
         android:layout_marginStart="10dp"
         android:layout_marginBottom="20dp"
-        android:text="@string/remove" />
+        android:text="@string/remove"
+        android:onClick="deleteItem"/>
 
     <Button
         android:id="@+id/joinBtn"
