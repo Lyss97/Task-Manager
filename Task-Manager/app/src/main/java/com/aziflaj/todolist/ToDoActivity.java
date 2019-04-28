@@ -599,6 +599,7 @@ public class ToDoActivity extends AppCompatActivity {
 
         //hide the button
         mAddButton.setVisibility(Button.GONE);
+        Log.d("flag", flag);
 
         if(flag == "create"){
             mEditText.setVisibility(EditText.GONE);
@@ -608,7 +609,6 @@ public class ToDoActivity extends AppCompatActivity {
         else if(flag == "stat"){
             mRadioGroup.setVisibility(RadioGroup.GONE);
             updateItemStatus(view);
-            currentStatus = "New";
         }
 
     }
@@ -629,13 +629,18 @@ public class ToDoActivity extends AppCompatActivity {
                         if (!results.isEmpty()) {
                             ToDoItem entity = new ToDoItem();
                             entity = results.get(0);
+                            Log.d("current status: ", entity.getStatus());
                             entity.setTStatus(currentStatus);
+                            Log.d("new status: ", entity.getStatus());
                             if(currentStatus == "Complete"){
                                 entity.setComplete(true);
                             }
-                            mToDoTable.update(entity);
+                            else{
+                                entity.setComplete(false);
+                            }
+                            mToDoTable.update(entity).get();
                             refreshItemsFromTable();
-
+                            currentStatus = "New";
                         } else {
                             createAndShowDialog("Please reload your menu.", "Error");
                         }
@@ -665,6 +670,7 @@ public class ToDoActivity extends AppCompatActivity {
 
     public void updateStatus(View view) {
         flag = "stat";
+        Log.d("flag", flag);
         mRadioGroup.setVisibility(RadioGroup.VISIBLE);
         mAddButton.setVisibility(Button.VISIBLE);
     }

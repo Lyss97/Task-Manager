@@ -43,13 +43,13 @@ public class ToDoItemAdapter extends ArrayAdapter<ToDoItem> {
         final ToDoItem currentItem = getItem(position);
 
         if(currentItem.getStatus() == "Complete"){
-            parent.getChildAt(position).setBackgroundColor(Color.parseColor("#B9FFD5"));
+            parent.setBackgroundColor(Color.parseColor("#B9FFD5"));
         }
         else if(currentItem.getStatus() == "In Progress"){
-            parent.getChildAt(position).setBackgroundColor(Color.parseColor("#CDD4FF"));
+            parent.setBackgroundColor(Color.parseColor("#CDD4FF"));
         }
         else if(currentItem.getStatus() == "New"){
-            parent.getChildAt(position).setBackgroundColor(Color.parseColor("#FFFFB7"));
+            parent.setBackgroundColor(Color.parseColor("#FFFFB7"));
         }
 
         if (row == null) {
