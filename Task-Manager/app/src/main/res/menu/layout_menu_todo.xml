@@ -3,6 +3,7 @@
 
     <item android:id="@+id/layoutmenu_refresh" android:orderInCategory="101"
         android:title="@string/menu_refresh"
-        app:showAsAction="always"></item>
+        app:showAsAction="always"
+        android:onClick="menuRefresh"/>
 
 </menu>

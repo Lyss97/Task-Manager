@@ -338,6 +338,9 @@ public class MenuActivity extends AppCompatActivity {
         return runAsyncTask(task);
     }
 
+    public void menuRefresh(MenuItem item) {
+        refreshItemsFromTable();
+    }
 
 
     private class ProgressFilter implements ServiceFilter {
@@ -556,7 +559,7 @@ public class MenuActivity extends AppCompatActivity {
                             refreshItemsFromTable();
 
                         } else {
-                            createAndShowDialog("Cannot Remove: ", "Error");
+                            createAndShowDialog("Please reload your menu.", "Error");
                         }
 
                         return null;

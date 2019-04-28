@@ -13,6 +13,8 @@ import android.app.AlertDialog;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -43,7 +45,7 @@ import com.squareup.okhttp.OkHttpClient;
 
 import static com.microsoft.windowsazure.mobileservices.table.query.QueryOperations.*;
 
-public class ToDoActivity extends Activity {
+public class ToDoActivity extends AppCompatActivity {
 
     /**
      * Client reference
@@ -100,6 +102,10 @@ public class ToDoActivity extends Activity {
         LayoutID = bundle.getString("LayoutID");
         blockVal = bundle.getString("blockVal");
         LayoutName = bundle.getString("LayoutName");
+
+        Log.d("Layout ID: ", LayoutID);
+        Log.d("Layout Name: ", LayoutName);
+        Log.d("Block Value: ", blockVal);
 
         this.setTitle(LayoutName+": " +blockVal);
 

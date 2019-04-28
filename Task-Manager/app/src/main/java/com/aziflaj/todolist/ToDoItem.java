@@ -75,52 +75,37 @@ public class ToDoItem {
 
     }
 
-    public String getText() {
-        return mText;
-    }
-
-    public String getId() {
-        return mId;
-    }
-
-    public String getTID(){ return tiText;}
-
-    public String getStatus() {return tsText;}
-
-    public String getLID() { return lText;}
-
-    public String getBV() {return bvText;}
-
-
-
-    public final void setText(String text) {
-        mText = text;
-    }
-
-    /**
-     * Sets the item id
-     *
-     * @param id
-     *            id to set
-     */
-    public final void setId(String id) {
-        mId = id;
-    }
-
-    /**
-     * Indicates if the item is marked as completed
-     */
+    //getters
     public boolean isComplete() {
         return mComplete;
     }
+    public String getText() {
+        return mText;
+    }
+    public String getId() {
+        return mId;
+    }
+    public String getTID(){ return tiText;}
+    public String getStatus() {return tsText;}
+    public String getLID() { return lText;}
+    public String getBV() {return bvText;}
 
-    /**
-     * Marks the item as completed or incompleted
-     */
+    //setters
     public void setComplete(boolean complete) {
         mComplete = complete;
     }
+    public final void setText(String text) {
+        mText = text;
+    }
+    public final void setId(String id) {
+        mId = id;
+    }
+    public final void setTID(String taskID){ tiText = taskID;}
+    public final void setTStatus(String taskStatus){tsText = taskStatus;}
+    public final void setLID(String layoutID){lText = layoutID;}
+    public final void setBV(String blockVal){bvText = blockVal;}
 
+    //comparative operator
     @Override
     public boolean equals(Object o) {
         return o instanceof ToDoItem && ((ToDoItem) o).mId == mId;

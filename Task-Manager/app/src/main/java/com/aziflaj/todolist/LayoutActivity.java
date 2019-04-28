@@ -40,7 +40,8 @@ public class LayoutActivity extends AppCompatActivity {
 
     public void onClick(View view3) {
         Button b = (Button) view3;
-        String blockVal = b.getText().toString();
+        blockVal = b.getText().toString();
+        Log.d("Block Value: ", blockVal);
         launchTaskActivity(view3);
     }
 
@@ -55,7 +56,7 @@ public class LayoutActivity extends AppCompatActivity {
 
         //Add data to bundle
         bundle.putString ("LayoutName", LayoutName);
-        bundle.putString("layoutID", LayoutID);
+        bundle.putString("LayoutID", LayoutID);
         bundle.putString("blockVal", blockVal);
 
         //Add the bundle to the intent
