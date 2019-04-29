@@ -56,20 +56,18 @@ public class LayoutItemAdapter extends ArrayAdapter<LayoutItem> {
 
 
         checkBox.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View arg0) {
-                if (checkBox.isChecked()) {
+                 if (checkBox.isChecked()) {
                     if (mContext instanceof MenuActivity) {
                         MenuActivity activity = (MenuActivity) mContext;
 
-                        activity.checkItem(currentItem);
+                         activity.checkItem(currentItem);
 
                         //our checkbox is in a list in a viewgroup, so get that viewgroup
                         ViewGroup vg = (ViewGroup) arg0.getParent().getParent();
                         //get the number of children in that viewgroup (each list has one checkbox
                         int size = vg.getChildCount();
-
                         //print to debug log how many list are in the view group
 
                         //for every list in the viewgroup
@@ -86,7 +84,6 @@ public class LayoutItemAdapter extends ArrayAdapter<LayoutItem> {
                 }
             }
         });
-
         return row;
     }
 }

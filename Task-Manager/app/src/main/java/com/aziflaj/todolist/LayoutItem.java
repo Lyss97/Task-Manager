@@ -33,6 +33,12 @@ public class LayoutItem {
     @com.google.gson.annotations.SerializedName("userID")
     private String userID;
 
+    /**
+     * Stores Admin ID
+     */
+    @com.google.gson.annotations.SerializedName("adminID")
+    private String adminID;
+
 
     /**
          * Layout constructor
@@ -56,8 +62,10 @@ public class LayoutItem {
             this.setLName(lName);
             this.setComplete(false);
             this.setUser(devID);
+            this.setAdmin(adminID);
         }
 
+    public String getAdmin() {return adminID; }
     public String getId() {
         return mId;
     }
@@ -99,6 +107,13 @@ public class LayoutItem {
      */
     public final void setUser(String devID) {
         userID = devID;
+    }
+
+    /**
+     * Sets the admin ID
+     */
+    public final void setAdmin(String AID) {
+        adminID = AID;
     }
 
     /**

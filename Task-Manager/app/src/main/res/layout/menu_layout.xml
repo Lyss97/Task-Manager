@@ -85,7 +85,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginBottom="20dp"
         android:text="@string/remove"
-        android:onClick="deleteItem"/>
+        android:onClick="checkDelete"/>
 
     <Button
         android:id="@+id/joinBtn"

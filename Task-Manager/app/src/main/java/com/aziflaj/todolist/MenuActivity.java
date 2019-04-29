@@ -76,12 +76,14 @@ public class MenuActivity extends AppCompatActivity {
     private ProgressBar mProgressBar;
     private EditText mTextEdit;
     private Button mButton;
+    private Button mRButton;
 
     private String devID;
     private String LayoutID = "";
     private String m_Text = "";
     private String LayoutName;
     private String flag = "";
+    private String AdminID = "";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -95,6 +97,8 @@ public class MenuActivity extends AppCompatActivity {
         devID = Settings.Secure.getString(this.getContentResolver(),
                 Settings.Secure.ANDROID_ID);
 
+        AdminID = devID;
+
         mProgressBar = (ProgressBar) findViewById(R.id.loadingProgressBar);
         // Initialize the progress bar
         mProgressBar.setVisibility(ProgressBar.GONE);
@@ -102,8 +106,11 @@ public class MenuActivity extends AppCompatActivity {
         mTextEdit = findViewById(R.id.newLayoutName);
         mTextEdit.setVisibility(EditText.GONE);
 
-       mButton = findViewById(R.id.newLayoutButton);
-       mButton.setVisibility(Button.GONE);
+
+        mButton = findViewById(R.id.newLayoutButton);
+        mButton.setVisibility(Button.GONE);
+        mRButton = findViewById(R.id.removeBtn);
+
 
         try {
             // Create the client instance, using the provided mobile app URL.
@@ -159,20 +166,23 @@ public class MenuActivity extends AppCompatActivity {
                 try {
                     checkItemInTable(item);
                         LayoutID = item.getLID();
-                        Log.d("LID of clicked: ", LayoutID);
                         LayoutName = item.getLName();
-                        Log.d("Name of clicked: ", LayoutName);
+                        AdminID = item.getAdmin();
+
+//                    change button to say delete item
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                          if(AdminID.equals(devID)){
+                            mRButton.setText("Delete");
+                          }
+                          else{
+                              mRButton.setText("Remove");
+                          }
+                        }
+                    });
 
 
-                    //below removes item
-//                    runOnUiThread(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            if (item.isComplete()) {
-//                              mAdapter.remove(item);
-//                            }
-//                        }
-//                    });
                 } catch (final Exception e) {
                     createAndShowDialogFromTask(e, "Error");
                 }
@@ -320,6 +330,7 @@ public class MenuActivity extends AppCompatActivity {
                     tableDefinition.put("layoutID", ColumnDataType.String);
                     tableDefinition.put("layoutName", ColumnDataType.String);
                     tableDefinition.put("userID", ColumnDataType.String);
+                    tableDefinition.put("adminID", ColumnDataType.String);
 
                     localStore.defineTable("LayoutItem", tableDefinition);
 
@@ -339,6 +350,7 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     public void menuRefresh(MenuItem item) {
+        mRButton.setText("Remove");
         refreshItemsFromTable();
     }
 
@@ -397,11 +409,11 @@ public class MenuActivity extends AppCompatActivity {
             final LayoutItem newItem = new LayoutItem();
             newItem.setLID(generateLayoutID());
             LayoutID = newItem.getLID();
-            Log.d("check", LayoutID);
             newItem.setLName(m_Text);
             LayoutName = m_Text;
             newItem.setComplete(false);
             newItem.setUser(devID);
+            newItem.setAdmin(devID);
 
             AsyncTask<Void, Void, Void> task = new AsyncTask<Void, Void, Void>() {
                 @Override
@@ -480,19 +492,19 @@ public class MenuActivity extends AppCompatActivity {
             AsyncTask<Void, Void, Void> task = new AsyncTask<Void, Void, Void>() {
                 @Override
                 protected Void doInBackground(Void... params) {
-                    Log.d("is it", "FROZEN?");
+
                     try {
                         List<LayoutItem> results = layoutTable
                                 .where()
                                 .field("layoutID").eq(m_Text)
                                 .execute()
                                 .get();
-                        Log.d("is it", "FROZEN?   2");
-                        if (!results.isEmpty()) {
 
+                        if (!results.isEmpty()) {
                             joinLayout.setUser(devID);
                             joinLayout.setLID(m_Text);
                             joinLayout.setLName(results.get(0).getLName());
+                            joinLayout.setAdmin(results.get(0).getAdmin());
 
 
                             try {
@@ -542,21 +554,33 @@ public class MenuActivity extends AppCompatActivity {
     }
 
 
+    public void checkDelete(View view){
+        if(AdminID.equals(devID)){
+            deleteItemAdmin(view);
+        }
+        else{
+            deleteItem(view);
+        }
+    }
+
     public void deleteItem(View view) {
         try {
             AsyncTask<Void, Void, Void> task = new AsyncTask<Void, Void, Void>() {
                 @Override
                 protected Void doInBackground(Void... params) {
-                    Log.d("is it", "FROZEN?");
                     try {
                         List<LayoutItem> results = layoutTable
                                 .where()
                                 .field("layoutID").eq(LayoutID)
+                                .and()
+                                .field("userID").eq(devID)
                                 .execute()
                                 .get();
-                        Log.d("is it", "FROZEN?   2");
                         if (!results.isEmpty()) {
+                            Log.d("There were results", "I think");
+                            Log.d("check", results.get(0).getLName());
                             layoutTable.delete(results.get(0));
+
                             refreshItemsFromTable();
 
                         } else {
@@ -579,6 +603,48 @@ public class MenuActivity extends AppCompatActivity {
 
 
     }
+
+
+
+    public void deleteItemAdmin(View view) {
+        try {
+            AsyncTask<Void, Void, Void> task = new AsyncTask<Void, Void, Void>() {
+                @Override
+                protected Void doInBackground(Void... params) {
+                    try {
+                        List<LayoutItem> results = layoutTable
+                                .where()
+                                .field("layoutID").eq(LayoutID)
+                                .execute()
+                                .get();
+                        if (!results.isEmpty()) {
+                            for(LayoutItem L : results)
+                            layoutTable.delete(L);
+                            refreshItemsFromTable();
+
+                        } else {
+                            createAndShowDialog("Please reload your menu.", "Error");
+                        }
+
+                        return null;
+                    } catch (final Exception e) {
+                        createAndShowDialogFromTask(e, "Error");
+                    }
+
+                    return null;
+                }
+
+            };
+            runAsyncTask(task);
+        } catch (final Exception e) {
+            createAndShowDialogFromTask(e, "Error");
+        }
+
+
+    }
+
+
+
 
 
     public void launchLayoutActivity(View view) {
