@@ -793,6 +793,7 @@ drawable tooltip_frame_dark
 drawable tooltip_frame_light
 id ALT
 id CTRL
+id ConfirmButton
 id FUNCTION
 id LinearLayout1
 id META
@@ -885,6 +886,7 @@ id center
 id center_horizontal
 id center_vertical
 id chains
+id checkCommentItem
 id checkLayoutItem
 id checkToDoItem
 id checkbox
@@ -892,10 +894,12 @@ id chronometer
 id clip_horizontal
 id clip_vertical
 id collapseActionView
+id commentViewMenu
 id container
 id contentPanel
 id coordinator
 id createBtn
+id createComBtn
 id createTaskBtn
 id custom
 id customPanel
@@ -960,6 +964,7 @@ id mini
 id multiply
 id navigation_header_container
 id never
+id newCommentText
 id newLayoutButton
 id newLayoutName
 id newTaskButton
@@ -985,6 +990,7 @@ id radio2
 id radio3
 id radio_group
 id removeBtn
+id removeComBtn
 id right
 id right_icon
 id right_side
@@ -1097,6 +1103,7 @@ layout abc_screen_toolbar
 layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
+layout activity_comment_main
 layout activity_to_do
 layout comment_layout
 layout design_bottom_navigation_item
@@ -1135,12 +1142,14 @@ layout notification_template_part_chronometer
 layout notification_template_part_time
 layout row_layout_to_do
 layout row_list_to_do
+layout row_menu_to_do
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
 layout support_simple_spinner_dropdown_item
 layout task_layout
 layout tooltip
+menu activity_commentmenu
 menu activity_todo
 menu layout_menu_todo
 menu main_menu
@@ -1179,6 +1188,7 @@ string abc_shareactionprovider_share_with_application
 string abc_toolbar_collapse_description
 string activity1_name
 string activity2_name
+string addComment
 string add_button_text
 string add_textbox_hint
 string app_name
@@ -1203,6 +1213,7 @@ string path_password_eye_mask_visible
 string path_password_strike_through
 string progB
 string remove
+string removeComment
 string search_menu_title
 string select
 string service_title

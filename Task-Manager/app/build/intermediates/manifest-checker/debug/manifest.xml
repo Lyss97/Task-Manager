@@ -44,13 +44,12 @@
             android:label="Block"
             android:parentActivityName="com.aziflaj.todolist.LayoutActivity" >
         </activity>
-        <!--
-            <activity android:name=".CommentActivity"
+        <activity
+            android:name="com.aziflaj.todolist.CommentActivity"
             android:label="Comment"
-            android:parentActivityName=".TaskActivity">
+            android:parentActivityName="com.aziflaj.todolist.ToDoActivity" >
+        </activity>
 
-        </activity
-        -->
         <meta-data
             android:name="android.support.VERSION"
             android:value="26.1.0" />

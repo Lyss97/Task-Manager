@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\Samuel\Documents\GIT\Task-Manager\app\src\main\AndroidManifest.xml:2:1-48:12
-INJECTED from C:\Users\Samuel\Documents\GIT\Task-Manager\app\src\main\AndroidManifest.xml:2:1-48:12
-INJECTED from C:\Users\Samuel\Documents\GIT\Task-Manager\app\src\main\AndroidManifest.xml:2:1-48:12
-INJECTED from C:\Users\Samuel\Documents\GIT\Task-Manager\app\src\main\AndroidManifest.xml:2:1-48:12
+ADDED from C:\Users\Samuel\Documents\GIT\Task-Manager\app\src\main\AndroidManifest.xml:2:1-49:12
+INJECTED from C:\Users\Samuel\Documents\GIT\Task-Manager\app\src\main\AndroidManifest.xml:2:1-49:12
+INJECTED from C:\Users\Samuel\Documents\GIT\Task-Manager\app\src\main\AndroidManifest.xml:2:1-49:12
+INJECTED from C:\Users\Samuel\Documents\GIT\Task-Manager\app\src\main\AndroidManifest.xml:2:1-49:12
 MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\Samuel\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\125eb3f49f57258fea42e7799b6b7fe1\AndroidManifest.xml:2:1-11:12
 MERGED from [com.android.support:design:26.1.0] C:\Users\Samuel\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\baa921abf4d1f684e24c49273287d934\AndroidManifest.xml:17:1-31:12
 MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\Samuel\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\b4b8cf1ef270e796958243c838c298a3\AndroidManifest.xml:17:1-31:12
@@ -19,20 +19,20 @@ MERGED from [com.android.support:support-core-utils:26.1.0] C:\Users\Samuel\.gra
 MERGED from [com.android.support:support-core-ui:26.1.0] C:\Users\Samuel\.gradle\caches\transforms-1\files-1.1\support-core-ui-26.1.0.aar\24aba2e2edda8355cd83584311de9fa4\AndroidManifest.xml:17:1-31:12
 MERGED from [com.android.support:support-compat:26.1.0] C:\Users\Samuel\.gradle\caches\transforms-1\files-1.1\support-compat-26.1.0.aar\3eb06aa2edd48ee8f3bbf708399bedb3\AndroidManifest.xml:17:1-31:12
 MERGED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\Samuel\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\57fbadf08b5866dd93bb2a96ce3fea4c\AndroidManifest.xml:17:1-30:12
-INJECTED from C:\Users\Samuel\Documents\GIT\Task-Manager\app\src\main\AndroidManifest.xml:2:1-48:12
-INJECTED from C:\Users\Samuel\Documents\GIT\Task-Manager\app\src\main\AndroidManifest.xml:2:1-48:12
-INJECTED from C:\Users\Samuel\Documents\GIT\Task-Manager\app\src\main\AndroidManifest.xml:2:1-48:12
+INJECTED from C:\Users\Samuel\Documents\GIT\Task-Manager\app\src\main\AndroidManifest.xml:2:1-49:12
+INJECTED from C:\Users\Samuel\Documents\GIT\Task-Manager\app\src\main\AndroidManifest.xml:2:1-49:12
+INJECTED from C:\Users\Samuel\Documents\GIT\Task-Manager\app\src\main\AndroidManifest.xml:2:1-49:12
 	package
 		ADDED from C:\Users\Samuel\Documents\GIT\Task-Manager\app\src\main\AndroidManifest.xml:3:5-35
 		INJECTED from C:\Users\Samuel\Documents\GIT\Task-Manager\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\Samuel\Documents\GIT\Task-Manager\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\Users\Samuel\Documents\GIT\Task-Manager\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Samuel\Documents\GIT\Task-Manager\app\src\main\AndroidManifest.xml:2:1-48:12
+		ADDED from C:\Users\Samuel\Documents\GIT\Task-Manager\app\src\main\AndroidManifest.xml:2:1-49:12
 		INJECTED from C:\Users\Samuel\Documents\GIT\Task-Manager\app\src\main\AndroidManifest.xml
 	android:versionCode
 		INJECTED from C:\Users\Samuel\Documents\GIT\Task-Manager\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Samuel\Documents\GIT\Task-Manager\app\src\main\AndroidManifest.xml:2:1-48:12
+		ADDED from C:\Users\Samuel\Documents\GIT\Task-Manager\app\src\main\AndroidManifest.xml:2:1-49:12
 		INJECTED from C:\Users\Samuel\Documents\GIT\Task-Manager\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Users\Samuel\Documents\GIT\Task-Manager\app\src\main\AndroidManifest.xml:2:11-69
@@ -45,7 +45,7 @@ ADDED from C:\Users\Samuel\Documents\GIT\Task-Manager\app\src\main\AndroidManife
 	android:name
 		ADDED from C:\Users\Samuel\Documents\GIT\Task-Manager\app\src\main\AndroidManifest.xml:5:22-72
 application
-ADDED from C:\Users\Samuel\Documents\GIT\Task-Manager\app\src\main\AndroidManifest.xml:7:5-46:19
+ADDED from C:\Users\Samuel\Documents\GIT\Task-Manager\app\src\main\AndroidManifest.xml:7:5-47:19
 MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\Samuel\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\125eb3f49f57258fea42e7799b6b7fe1\AndroidManifest.xml:9:5-20
 MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\Samuel\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\125eb3f49f57258fea42e7799b6b7fe1\AndroidManifest.xml:9:5-20
 MERGED from [com.android.support:design:26.1.0] C:\Users\Samuel\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\baa921abf4d1f684e24c49273287d934\AndroidManifest.xml:25:5-29:19
@@ -132,6 +132,14 @@ ADDED from C:\Users\Samuel\Documents\GIT\Task-Manager\app\src\main\AndroidManife
 		ADDED from C:\Users\Samuel\Documents\GIT\Task-Manager\app\src\main\AndroidManifest.xml:37:13-34
 	android:name
 		ADDED from C:\Users\Samuel\Documents\GIT\Task-Manager\app\src\main\AndroidManifest.xml:36:13-41
+activity#com.aziflaj.todolist.CommentActivity
+ADDED from C:\Users\Samuel\Documents\GIT\Task-Manager\app\src\main\AndroidManifest.xml:41:8-46:20
+	android:parentActivityName
+		ADDED from C:\Users\Samuel\Documents\GIT\Task-Manager\app\src\main\AndroidManifest.xml:44:13-55
+	android:label
+		ADDED from C:\Users\Samuel\Documents\GIT\Task-Manager\app\src\main\AndroidManifest.xml:43:13-36
+	android:name
+		ADDED from C:\Users\Samuel\Documents\GIT\Task-Manager\app\src\main\AndroidManifest.xml:42:13-44
 uses-sdk
 INJECTED from C:\Users\Samuel\Documents\GIT\Task-Manager\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\Samuel\Documents\GIT\Task-Manager\app\src\main\AndroidManifest.xml

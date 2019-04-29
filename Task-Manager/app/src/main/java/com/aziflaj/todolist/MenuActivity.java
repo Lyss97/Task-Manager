@@ -91,9 +91,9 @@ public class MenuActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_layout);
+
         devID = Settings.Secure.getString(this.getContentResolver(),
                 Settings.Secure.ANDROID_ID);
-        Log.d("check", devID);
 
         mProgressBar = (ProgressBar) findViewById(R.id.loadingProgressBar);
         // Initialize the progress bar

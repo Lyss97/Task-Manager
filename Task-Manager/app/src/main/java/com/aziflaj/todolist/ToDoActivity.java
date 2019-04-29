@@ -75,11 +75,6 @@ public class ToDoActivity extends AppCompatActivity {
     private ToDoItemAdapter mAdapter;
 
     /**
-     * EditText containing the "New To Do" text
-     */
-    private EditText mTextNewToDo;
-
-    /**
      * Progress spinner to use for table operations
      */
     private ProgressBar mProgressBar;
@@ -94,6 +89,7 @@ public class ToDoActivity extends AppCompatActivity {
     private String TaskID;
     private String currentStatus = "New";
     private String flag = "";
+    private String TaskName;
 
     //list of statuses available to a task
     List<String> Status = Arrays.asList("New", "In Progress", "Complete");
@@ -118,10 +114,6 @@ public class ToDoActivity extends AppCompatActivity {
         LayoutID = bundle.getString("LayoutID");
         blockVal = bundle.getString("blockVal");
         LayoutName = bundle.getString("LayoutName");
-
-        Log.d("Layout ID: ", LayoutID);
-        Log.d("Layout Name: ", LayoutName);
-        Log.d("Block Value: ", blockVal);
 
         this.setTitle(LayoutName+": " +blockVal);
 
@@ -220,6 +212,7 @@ public class ToDoActivity extends AppCompatActivity {
 
                     checkItemInTable(item);
                     TaskID = item.getTID();
+                    TaskName = item.getText();
                 } catch (final Exception e) {
                     createAndShowDialogFromTask(e, "Error");
                 }
@@ -545,6 +538,9 @@ public class ToDoActivity extends AppCompatActivity {
 
     }
 
+    public void menuRefresh(MenuItem item) {
+        refreshItemsFromTable();
+    }
 
 
     private class ProgressFilter implements ServiceFilter {
@@ -679,22 +675,22 @@ public class ToDoActivity extends AppCompatActivity {
 
     //once comment activity has been defined
     public void launchCommentActivity(View view){
+        Intent commentIntent = new Intent(this, CommentActivity.class);
 
-//        Intent commentIntent = new Intent(this, CommentActivity.class);
+        //Create the bundle
+        Bundle bundle = new Bundle();
 
-//        //Create the bundle
-//        Bundle bundle = new Bundle();
+//        Add data to bundle
 
-        //Add data to bundle
+        bundle.putString("TaskID", TaskID);
+        bundle.putString("LayoutID", LayoutID);
+        bundle.putString("TaskName", TaskName);
 
-//        bundle.putString("TaskID", TaskID);
-//        bundle.putString("LayoutID", LayoutID);
+//        Add the bundle to the intent
+        commentIntent.putExtras(bundle);
 
-        //Add the bundle to the intent
-//        layoutIntent.putExtras(bundle);
-
-        //Fire menu activity
-//        startActivity(commentIntent);
+//        Fire menu activity
+        startActivity(commentIntent);
     }
 
 }

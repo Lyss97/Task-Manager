@@ -75,4 +75,6 @@
     <string name="progB">In Progress</string>
     <string name="comB">Complete</string>
     <string name="finish">Finish</string>
+    <string name="addComment">Add Comment</string>
+    <string name="removeComment">Remove Comment</string>
 </resources>

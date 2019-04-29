@@ -38,11 +38,12 @@
             android:parentActivityName=".LayoutActivity">
 
         </activity>
-<!--        <activity android:name=".CommentActivity"
+       <activity
+            android:name=".CommentActivity"
             android:label="Comment"
-            android:parentActivityName=".TaskActivity">
+            android:parentActivityName=".ToDoActivity">
 
-        </activity-->
+        </activity>
     </application>
 
 </manifest>

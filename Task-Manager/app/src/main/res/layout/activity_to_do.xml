@@ -30,34 +30,6 @@
 
     </ListView>
 
-    <!--<LinearLayout-->
-        <!--android:layout_alignParentBottom="true"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:background="@color/colorPrimary"-->
-        <!--android:padding="6dip">-->
-
-        <!--<EditText-->
-            <!--android:id="@+id/textNewToDo"-->
-            <!--android:layout_width="0dip"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_weight="1"-->
-            <!--android:ems="10"-->
-            <!--android:hint="@string/add_textbox_hint"-->
-            <!--android:textColor="@android:color/white">-->
-
-            <!--<requestFocus />-->
-        <!--</EditText>-->
-
-        <!--<Button-->
-            <!--android:id="@+id/buttonAddToDo"-->
-            <!--style="@android:style/Widget.Button"-->
-            <!--android:layout_width="64dip"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:onClick="addItem"-->
-            <!--android:text="@string/confirm" />-->
-
-    <!--</LinearLayout>-->
 
     <RadioGroup
         android:id="@+id/radio_group"
@@ -155,5 +127,5 @@
         android:layout_marginStart="10dp"
         android:layout_marginBottom="20dp"
         android:onClick="removeTask"
-        android:text="@string/finish" />
+        android:text="@string/remove" />
 </RelativeLayout>
