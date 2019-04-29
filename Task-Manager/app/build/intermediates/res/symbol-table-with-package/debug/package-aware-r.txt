@@ -775,6 +775,7 @@ drawable design_ic_visibility
 drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
+drawable download
 drawable ic_launcher_background
 drawable navigation_empty_icon
 drawable notification_action_background
@@ -795,6 +796,7 @@ id ALT
 id CTRL
 id ConfirmButton
 id FUNCTION
+id LayoutCheck
 id LinearLayout1
 id META
 id SHIFT
@@ -821,6 +823,7 @@ id action_text
 id actions
 id activity_chooser_view_content
 id add
+id adminMark
 id alertTitle
 id all
 id always
@@ -948,7 +951,6 @@ id layoutmenu_refresh
 id left
 id line1
 id line3
-id linearlayout
 id listMode
 id listViewToDo
 id list_item
@@ -1155,6 +1157,7 @@ menu layout_menu_todo
 menu main_menu
 mipmap ic_launcher
 string Add_comment
+string Admin
 string abc_action_bar_home_description
 string abc_action_bar_home_description_format
 string abc_action_bar_home_subtitle_description_format

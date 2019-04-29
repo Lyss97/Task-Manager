@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.Image;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.provider.Settings;
@@ -18,6 +19,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 
@@ -77,6 +79,7 @@ public class MenuActivity extends AppCompatActivity {
     private EditText mTextEdit;
     private Button mButton;
     private Button mRButton;
+    private ImageView mImage;
 
     private String devID;
     private String LayoutID = "";
@@ -138,7 +141,7 @@ public class MenuActivity extends AppCompatActivity {
             // Load the items from the mobile app backend.
             refreshItemsFromTable();
 
-            mAdapter = new LayoutItemAdapter(this, R.layout.row_layout_to_do);
+            mAdapter = new LayoutItemAdapter(this, R.layout.row_layout_to_do, devID);
             ListView listViewToDo = (ListView) findViewById(R.id.layoutViewToDo);
             listViewToDo.setAdapter(mAdapter);
 

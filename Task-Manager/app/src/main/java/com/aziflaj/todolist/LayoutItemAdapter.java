@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 
@@ -26,9 +27,12 @@ public class LayoutItemAdapter extends ArrayAdapter<LayoutItem> {
      */
     int mLayoutResourceId;
 
-    public LayoutItemAdapter(Context context, int layoutResourceId) {
+    private String checkID;
+
+    public LayoutItemAdapter(Context context, int layoutResourceId, String devID) {
         super(context, layoutResourceId);
 
+        checkID = devID;
         mContext = context;
         mLayoutResourceId = layoutResourceId;
     }
@@ -48,9 +52,19 @@ public class LayoutItemAdapter extends ArrayAdapter<LayoutItem> {
             row = inflater.inflate(mLayoutResourceId, parent, false);
         }
 
+
+
         row.setTag(currentItem);
         final CheckBox checkBox = (CheckBox) row.findViewById(R.id.checkLayoutItem);
         checkBox.setText(currentItem.getLName());
+
+        final ImageView image = (ImageView) row.findViewById(R.id.adminMark);
+        if (checkID.equals(currentItem.getAdmin())){
+            image.setVisibility(ImageView.VISIBLE);
+        }
+        else{
+            image.setVisibility(ImageView.GONE);
+        }
         checkBox.setChecked(false);
         checkBox.setEnabled(true);
 
