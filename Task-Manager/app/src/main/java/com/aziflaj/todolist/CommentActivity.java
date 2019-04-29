@@ -101,7 +101,7 @@ public class CommentActivity extends AppCompatActivity {
         TaskID = bundle.getString("TaskID");
         TaskName = bundle.getString("TaskName");
 
-        this.setTitle(TaskName);
+        this.setTitle("Comments: "+TaskName);
 
 
         mProgressBar = (ProgressBar) findViewById(R.id.loadingProgressBar);
