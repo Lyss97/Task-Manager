@@ -92,8 +92,8 @@ public class ToDoActivity extends AppCompatActivity {
     private String LayoutName;
     private String blockVal;
     private String TaskID;
-    private String currentStatus;
-    private String flag;
+    private String currentStatus = "New";
+    private String flag = "";
 
     //list of statuses available to a task
     List<String> Status = Arrays.asList("New", "In Progress", "Complete");
@@ -609,6 +609,7 @@ public class ToDoActivity extends AppCompatActivity {
         else if(flag == "stat"){
             mRadioGroup.setVisibility(RadioGroup.GONE);
             updateItemStatus(view);
+            mRadioGroup.clearCheck();
         }
 
     }

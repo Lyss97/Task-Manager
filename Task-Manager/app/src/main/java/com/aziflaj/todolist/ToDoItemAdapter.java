@@ -3,11 +3,13 @@ package com.aziflaj.todolist;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
+import android.widget.LinearLayout;
 
 import com.aziflaj.todolist.ToDoItem;
 
@@ -42,16 +44,6 @@ public class ToDoItemAdapter extends ArrayAdapter<ToDoItem> {
 
         final ToDoItem currentItem = getItem(position);
 
-        if(currentItem.getStatus() == "Complete"){
-            parent.setBackgroundColor(Color.parseColor("#B9FFD5"));
-        }
-        else if(currentItem.getStatus() == "In Progress"){
-            parent.setBackgroundColor(Color.parseColor("#CDD4FF"));
-        }
-        else if(currentItem.getStatus() == "New"){
-            parent.setBackgroundColor(Color.parseColor("#FFFFB7"));
-        }
-
         if (row == null) {
             LayoutInflater inflater = ((Activity) mContext).getLayoutInflater();
             row = inflater.inflate(mLayoutResourceId, parent, false);
@@ -62,10 +54,19 @@ public class ToDoItemAdapter extends ArrayAdapter<ToDoItem> {
         final CheckBox checkBox = (CheckBox) row.findViewById(R.id.checkToDoItem);
         checkBox.setText(currentItem.getText());
         checkBox.setChecked(false);
-        //checkBox.setEnabled(true);
+
+        if(currentItem.getStatus().equals("Complete")){
+            row.setBackgroundResource(R.color.list_bg_1);
+        }
+        else if(currentItem.getStatus().equals("In Progress")){
+            row.setBackgroundResource(R.color.list_bg_2);
+        }
+        else if(currentItem.getStatus().equals("New")){
+            row.setBackgroundResource(R.color.list_bg_3);
+        }
+
 
         checkBox.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View arg0) {
                 if (checkBox.isChecked()) {

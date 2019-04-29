@@ -486,6 +486,9 @@ color foreground_material_light
 color grey
 color highlighted_text_material_dark
 color highlighted_text_material_light
+color list_bg_1
+color list_bg_2
+color list_bg_3
 color material_blue_grey_800
 color material_blue_grey_900
 color material_blue_grey_950
