@@ -7,7 +7,7 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="                       Task-Manager"
+        android:label= "Accomplish"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:supportsRtl="true"
@@ -21,13 +21,13 @@
             </intent-filter>
         </activity>
         <activity android:name=".MenuActivity"
-            android:label="                 Menu"
+            android:label="                                             Menu"
             android:parentActivityName=".HomeActivity">
 
         </activity>
         <activity
             android:name=".LayoutActivity"
-            android:label="                 Layout"
+            android:label="                         Layout"
             android:parentActivityName=".MenuActivity">
 
         </activity>

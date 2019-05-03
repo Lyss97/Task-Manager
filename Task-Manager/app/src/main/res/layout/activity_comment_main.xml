@@ -5,9 +5,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CommentActivity">
+    tools:context=".CommentActivity"
+    android:background="@drawable/backgroundapp">
 
     <LinearLayout
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
@@ -21,6 +23,7 @@
 
 
     <ListView
+        android:textColor ="@color/white"
         android:layout_marginTop="50dp"
         android:id="@+id/commentViewMenu"
         android:layout_width="match_parent"
@@ -31,6 +34,7 @@
 
 
     <EditText
+        android:textColor ="@color/white"
         android:id="@+id/newCommentText"
         android:layout_alignStart="@id/createComBtn"
         android:layout_toLeftOf="@id/ConfirmButton"

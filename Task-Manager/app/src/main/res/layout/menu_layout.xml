@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MenuActivity">
+    tools:context=".MenuActivity"
+    android:background="@drawable/backgroundapp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -31,6 +32,7 @@
 
 
     <EditText
+        android:textColor ="@color/white"
         android:id="@+id/newLayoutName"
         android:layout_alignStart="@id/createBtn"
         android:layout_alignEnd="@id/removeBtn"
